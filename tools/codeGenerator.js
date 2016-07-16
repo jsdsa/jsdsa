@@ -6,7 +6,7 @@
 
 /** Require calls */
 var inquirer = require('inquirer'),
-	fs = require('fs');
+    fs = require('fs');
 
 /** Cache methods or assign Globals */
 var VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'];
@@ -101,3 +101,4 @@ infos.forEach(function(val){
     var section = constructSection(val);
     sections.push(section);
 });
+
