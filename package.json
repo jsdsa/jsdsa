@@ -2,10 +2,13 @@
   "name": "jsdsa",
   "version": "0.0.3",
   "description": "JavaScript Data Structures and Algorithms",
+  "author": "ironmaniiith <aalekhj2507@gmail.com> (https://github.com/ironmaniiith)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ironmaniiith <aalekhj2507@gmail.com> (https://github.com/ironmaniiith)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "inquirer": "^1.1.2"
+  }
 }
