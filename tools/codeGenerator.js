@@ -52,12 +52,12 @@ var nonEmpty = function(e){ return e !== '' },
         {
             'Function Name': {
                 type: 'input',
-                message: 'Name of the function to export [O]:'
+                message: 'Name of the function to export [O]:',
                 'default': function(){ return 'testFunc' }
             },
             'Module Name': {
                 type: 'input',
-                message: 'Name of the module to export [O]:'
+                message: 'Name of the module to export [O]:',
                 'default': function(){ return 'testModule' }
             }
         }
@@ -101,4 +101,3 @@ infos.forEach(function(val){
     var section = constructSection(val);
     sections.push(section);
 });
-
