@@ -5,6 +5,7 @@
  *  Time Complexity: O(logn)
  *  Description: Finds the position of a target value (key) within a sorted array.
  *  Resources: https://en.wikipedia.org/wiki/Binary_search_algorithm
+ *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
  */
 
 /** Cache some methods to call later */

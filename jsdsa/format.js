@@ -6,6 +6,7 @@
  *  Description: <Description about the Algorithm or Data Structure>
  *  Resources: <Resources for more detailed understanding, preferrable wikipedia link>
  *  Extras: <Other relevant information>
+ *  Contributors: <Name/github_username Website/email_address>, <Name/github_username Website/email_address>, ...
  */
 
 /** Cache some methods to call later */

@@ -5,6 +5,7 @@
  *  Time Complexity: O(n)
  *  Description: Finds the position of a target value (key) within an array.
  *  Resources: https://en.wikipedia.org/wiki/Linear_search
+ *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
  */
 
 
