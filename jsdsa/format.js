@@ -11,7 +11,7 @@
 
 /** Require calls */
 
-/** Cache some methods to call later */
+/** Cache methods or assign Globals */
 
 /**
  *  <Function Name>: 

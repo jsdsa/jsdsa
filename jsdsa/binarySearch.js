@@ -8,7 +8,7 @@
  *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
  */
 
-/** Cache some methods to call later */
+/** Cache methods or assign Globals */
 var Floor = Math.floor;
 
 /**

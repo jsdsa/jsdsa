@@ -1,7 +1,7 @@
 /**
  *  Description: Checks if the given file exist or not
  *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
-  */
+ */
 
 /** Require calls */
 var fs = require('fs');
