@@ -5,7 +5,8 @@
  */
 
 /** Require calls */
-var inquirer = require('inquirer');
+var inquirer = require('inquirer'),
+	fs = require('fs');
 
 /** Cache methods or assign Globals */
 var VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'];
