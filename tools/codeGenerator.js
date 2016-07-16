@@ -80,7 +80,7 @@ function constructSection(info, cb) {
     var section = [];
     for (var key in info) {
         var type = 'input',
-            message = info[key];
+            message = info[key],
             details = {
                 name: key,
                 type: type,
