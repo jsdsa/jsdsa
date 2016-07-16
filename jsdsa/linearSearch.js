@@ -8,7 +8,6 @@
  *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
  */
 
-
 /**
  *  linearSearch: 
  *      Find the index of the given `key` within the given range (`low` and `up` inclusive)
