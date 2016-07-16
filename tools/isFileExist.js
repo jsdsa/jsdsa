@@ -1,5 +1,6 @@
 /**
- Checks if the given file exist or not
+ *  Description: Checks if the given file exist or not
+ *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
   */
 
 /** Require calls */
@@ -24,7 +25,7 @@ function isFileExist(file, cb) {
 	try {
 		fs.statSync(file);
 		isExist = true;
-	} catch (e) {}
+	} catch (e) {};
 	return cb(isExist);
 }
 
