@@ -10,7 +10,7 @@ var inquirer = require('inquirer'),
 
 /** Cache methods or assign Globals */
 var VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'],
-	slice = Array.prototype.slice;
+    slice = Array.prototype.slice;
 
 var nonEmpty = function(e){ return e !== '' },
     simpleReturn = function(o){ return o },
@@ -105,16 +105,16 @@ infos.forEach(function(val){
 });
 
 function prettify() {
-	var args = 	slice.call(arguments);
-	console.log(JSON.stringify.apply(null, args));
+    var args =  slice.call(arguments);
+    console.log(JSON.stringify.apply(null, args));
 }
 
 function run(section, index, sections) {
-	inquirer.prompt(section).then(function(answers){
-		prettify(answers, null, '  ');
-		if (sections[++index]) {
-			run.call(null, sections[index], index, sections);
-		}
-	});
+    inquirer.prompt(section).then(function(answers){
+        prettify(answers, null, '  ');
+        if (sections[++index]) {
+            run.call(null, sections[index], index, sections);
+        }
+    });
 }
 run(sections[1], 1, sections);
