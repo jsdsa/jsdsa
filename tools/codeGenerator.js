@@ -9,7 +9,8 @@ var inquirer = require('inquirer'),
     fs = require('fs');
 
 /** Cache methods or assign Globals */
-var VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'];
+var VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'],
+	slice = Array.prototype.slice;
 
 var nonEmpty = function(e){ return e !== '' },
     simpleReturn = function(o){ return o },
@@ -78,6 +79,7 @@ var nonEmpty = function(e){ return e !== '' },
 function constructSection(info, cb) {
     cb = cb || simpleReturn;
     var section = [];
+
     for (var key in info) {
         var type = 'input',
             message = info[key],
@@ -86,7 +88,7 @@ function constructSection(info, cb) {
                 type: type,
                 message: message
             };
-        if (typeof message === 'object') { // supports object assignment with various params
+        if (typeof message === 'object') { // supports object assignment other params
             for (var detail in message) {
                 details[detail] = message[detail];
             }
@@ -101,3 +103,18 @@ infos.forEach(function(val){
     var section = constructSection(val);
     sections.push(section);
 });
+
+function prettify() {
+	var args = 	slice.call(arguments);
+	console.log(JSON.stringify.apply(null, args));
+}
+
+function run(section, index, sections) {
+	inquirer.prompt(section).then(function(answers){
+		prettify(answers, null, '  ');
+		if (sections[++index]) {
+			run.call(null, sections[index], index, sections);
+		}
+	});
+}
+run(sections[1], 1, sections);
