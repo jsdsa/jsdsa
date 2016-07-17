@@ -14,17 +14,11 @@
 /** Cache methods or assign Globals */
 
 /**
- *  <Function Name>: 
+ *  <FunctionName>:
  *      <Short Description about the Function>
  *
- *  Required:
- *  @param {Type} [<param Name>] <Short Param Description>
- *
- *  Optional:
- *  @param {Type} [<param Name>] <Short Param Description>
- *
- *  Undocumented:
- *  @param {Type} [<param Name>] <Short Param Description>
+ *  Type [Required|Optional|Undocumented]:
+ *  @param {VarType} [<ParamName>] <Short Param Description>
  *
  *  @returns {Type} <Short Description of what the Function returns>
  */
@@ -32,5 +26,5 @@ function Name(arguments) {
     // code
 }
 
-/** Export the `<Name>` function */
-module.exports.Name = Name;
+/** Export the `<FunctionName>` function */
+module.exports.ModuleName = FunctionName;

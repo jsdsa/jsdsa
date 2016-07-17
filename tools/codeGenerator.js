@@ -9,7 +9,8 @@ var inquirer = require('inquirer'),
     fs = require('fs');
 
 /** Cache methods or assign Globals */
-var VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'],
+var VARTYPES = ['Required', 'Optional', 'Undocumented'],
+    VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'],
     slice = Array.prototype.slice;
 
 var nonEmpty = function(e){ return e !== '' },
@@ -30,33 +31,38 @@ var nonEmpty = function(e){ return e !== '' },
             'Contributors' : 'Your Name and Emailid (add yourself as contributor) [O]:'
         },
         { /* Second section, the Require Calls section */
-            'Module Name': 'Name of the Module to require [M]:',
-            'Var' : 'Enter the variable name to store the module [M]:'
+            '<ModuleName>': 'Name of the Module to require [M]:',
+            '<Var>' : 'Enter the variable name to store the module [M]:'
         },
         { /* Third section, cache the methods to call later */
-            'Method': 'Method to Cache [M]:',
-            'Var': 'Enter the variable name to store the method [M]:',
+            '<Method>': 'Method to Cache/Value of Global variable [M]:',
+            '<Var>': 'Enter the variable name to store it [M]:'
         },
         { /* Fourth section, give the function name and description */
-            'Function Name': 'Name of the Function [M]:' ,
-            'Short Description': 'Short description of the function [O]:'
+            '<FunctionName>': 'Name of the Function [M]:' ,
+            '<ShortDescription>': 'Short description of the function [O]:'
         },
         { /* Fifth section, give parameter type, name and description */
-            'param Name': 'Give the parameter name [M]:',
-            'Type': {
-                'type': 'list',
+            '<ParamName>': 'Give the parameter name [M]:',
+            '<Type>': {
+                type: 'rawlist',
                 'message': 'Type of parameter [M]:',
+                'choices': VARTYPES
+            },
+            '<VarType>': {
+                'type': 'list',
+                'message': 'Variable type of parameter [M]:',
                 'choices': VARCHOICES
             },
-            'Short Param Description': 'Short description for this parameter [O]:' 
+            '<ShortParamDescription>': 'Short description for this parameter [O]:'
         },
-        {
-            'Function Name': {
+        { /* Sixth section, export module */
+            '<FunctionName>': {
                 type: 'input',
                 message: 'Name of the function to export [O]:',
                 'default': function(){ return 'testFunc' }
             },
-            'Module Name': {
+            '<ModuleName>': {
                 type: 'input',
                 message: 'Name of the module to export [O]:',
                 'default': function(){ return 'testModule' }
