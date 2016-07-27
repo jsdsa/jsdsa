@@ -54,6 +54,7 @@ function commentify(sectionTexts) {
  */
 function constructSection(info, cb) {
     cb = cb || simpleReturn;
+    !!info['main'] && (info = info['main']);
     var section = [];
 
     for (var key in info) {
