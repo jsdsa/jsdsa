@@ -194,6 +194,32 @@ infos.forEach(function(val){
     sections.push(section);
 });
 
+/**
+ *  sentenceGenerator:
+ *      Construct the sentence with the given key, value and seperator from info object
+ *
+ *  Required:
+ *  @param {String} [key] Key from the info object
+ *  @param {String} [value] Corresponding value of the given key in info object
+ *  @param {String} [seperator] The seperator used for generating the sentence
+ *
+ *  @returns {String} The sentence generated based on the key, value and seperator pairs
+ */
+function sentenceGenerator(key, value, seperator) {
+    var start = key[0],
+        end = key[key.length - 1];
+
+    if (start === '<' && end === '>') {
+        return value + seperator;
+    } else if (start === '<') {
+        return value + seperator;
+    } else if (end === '>') {
+        return value;
+    } else {
+        return key + seperator + value;
+    }
+}
+
 function run(section, index, sections) {
     inquirer.prompt(section).then(function(answers){
         prettify(answers, null, '  ');
