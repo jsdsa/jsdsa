@@ -14,10 +14,11 @@ var VARTYPES = ['Required', 'Optional', 'Undocumented'],
     slice = Array.prototype.slice,
     splice = Array.prototype.splice,
     getKeys = Object.keys,
-    nonEmpty = function(e){ return e !== '' },
+    nonEmpty = function(e){ return e != '' },
     simpleReturn = function(o){ return o },
     prettify = function(){ console.log(JSON.stringify.apply(null, slice.call(arguments))) },
-    sections = [];
+    sections = [],
+    processedSections = [];
 
 /**
  *  commentify:
@@ -29,7 +30,7 @@ var VARTYPES = ['Required', 'Optional', 'Undocumented'],
  *  @returns {Array} Modified sectionTexts array
  */
 function commentify(sectionTexts) {
-    var newSectionTexts = [],
+    var newSectionTexts = [];
         length = sectionTexts.length;
 
     newSectionTexts.push('/**');
@@ -105,7 +106,7 @@ var infos = [
                 prefix: ' ',
                 suffix: '\n',
                 startWith: '',
-                endWith: ''
+                endWith: '\n'
             }
         },
         { /* Second section, the Require Calls section */
@@ -259,15 +260,49 @@ function processAnswers(answers, info) {
     return sentences;
 }
 
+function splitter(string, seperator, condition) {
+    var splittedValues = string.split(seperator);
+    if (condition) {
+        splittedValues = splittedValues.filter(condition);
+    }
+    return splittedValues;
+}
+
+function preprocessor() {
+    processedSections.forEach(function(val, index, array) {
+        val = val.reduce(function(prev, curr) {
+            return prev + curr;
+        });
+        array[index] = splitter(val, '\n');
+    });
+    processedSections[0] = commentify(processedSections[0]);
+    processedSections[3] = commentify(processedSections[3].concat(processedSections[4]));
+    splice.call(processedSections, 4, 1);
+    processedSections.forEach(function(val) {
+        console.log(val.join('\n'));
+    })
+}
+
+function final() {
+    preprocessor();
+    processedSections.forEach(function(val) {
+        var totalString = val.reduce(function(prev, curr) {
+            return prev + curr;
+        });
+    });
+    // console.log(processedSections);
+}
 
 function run(section, index, sections) {
     // TODO for multiple: true
     inquirer.prompt(section).then(function(answers){
         prettify(answers, null, '  ');
         var sentences = processAnswers(answers, infos[index]);
-        console.log(sentences);
+        processedSections.push(sentences);
         if (sections[++index]) {
             run.call(null, sections[index], index, sections);
+        } else {
+            final();
         }
     });
 }
