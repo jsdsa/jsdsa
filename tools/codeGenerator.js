@@ -134,11 +134,6 @@ infos.forEach(function(val){
     sections.push(section);
 });
 
-function prettify() {
-    var args =  slice.call(arguments);
-    console.log(JSON.stringify.apply(null, args));
-}
-
 function run(section, index, sections) {
     inquirer.prompt(section).then(function(answers){
         prettify(answers, null, '  ');
