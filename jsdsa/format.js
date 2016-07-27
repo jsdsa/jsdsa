@@ -22,9 +22,9 @@
  *
  *  @returns {Type} <Short Description of what the Function returns>
  */
-function Name(arguments) {
+function FunctionName(arguments) {
     // code
 }
 
-/** Export the `<FunctionName>` function */
+/** Export the function as module */
 module.exports.ModuleName = FunctionName;
