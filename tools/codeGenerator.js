@@ -10,12 +10,14 @@ var inquirer = require('inquirer'),
 
 /** Cache methods or assign Globals */
 var VARTYPES = ['Required', 'Optional', 'Undocumented'],
-    VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Other'],
-    slice = Array.prototype.slice;
-
-var nonEmpty = function(e){ return e !== '' },
+    VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Null', 'Other'],
+    slice = Array.prototype.slice,
+    splice = Array.prototype.splice,
+    getKeys = Object.keys,
+    nonEmpty = function(e){ return e !== '' },
     simpleReturn = function(o){ return o },
-    sections = [],
+    prettify = function(){ console.log(JSON.stringify.apply(null, slice.call(arguments))) },
+    sections = [];
     infos = [
         { /* Zeroth section bhagwan ke naam, I am an Indian B-) */
 
