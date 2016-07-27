@@ -73,6 +73,27 @@ var VARTYPES = ['Required', 'Optional', 'Undocumented'],
     ];
 
 /**
+ *  commentify:
+ *      Add multiline comment (like what is applied to this description) to a section texts array
+ *
+ *  Required:
+ *  @param {Array} [sectionTexts] Array containing the exact structure that needs to be written in file
+ *
+ *  @returns {Array} Modified sectionTexts array
+ */
+function commentify(sectionTexts) {
+    var newSectionTexts = [],
+        length = sectionTexts.length;
+
+    newSectionTexts.push('/**');
+    sectionTexts.forEach(function(val){
+        newSectionTexts.push(' * ' + val);
+    });
+    newSectionTexts[length] = ' */'; // Last line need to be comments' closing
+    return newSectionTexts;
+}
+
+/**
  *  constructSection: 
  *      Construct the section object for inquirer according to the info object
  *
