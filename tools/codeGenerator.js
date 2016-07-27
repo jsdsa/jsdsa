@@ -221,9 +221,51 @@ function sentenceGenerator(key, value, seperator) {
     }
 }
 
+function processAnswers(answers, info) {
+    var sentences = [],
+        extras = info['extras'],
+        intro = extras['intro'],
+        prefix = extras['prefix'] || '',
+        suffix = extras['suffix'] || '',
+        startWith = extras.hasOwnProperty('startWith') ? extras['startWith'] : prefix,
+        endWith = extras.hasOwnProperty('endWith') ? extras['endWith'] : suffix,
+        replacer = extras['replacer'],
+        keys = getKeys(extras);
+
+    if (extras['multiple']) {
+        // TODO
+    }
+
+    if (replacer) {
+        for (var key in answers) {
+            replacer = replacer.replace(key, answers[key]);
+        }
+        replacer = prefix + replacer + suffix;
+        sentences.push(replacer);
+    } else {
+        var seperator = extras['seperator'];
+        for (var key in answers) {
+            var sentence = prefix + sentenceGenerator(key, answers[key], seperator) + suffix;
+            sentences.push(sentence);
+        }
+    }
+    var length = sentences.length;
+    sentences[0] = sentences[0].replace(prefix, startWith); // Replace prefix with startWith
+    sentences[length - 1] = sentences[length - 1].replace(new RegExp(suffix + '$'), endWith); // Replace suffix with endWith
+
+    if (intro) { // Intentionally at the last
+        sentences.unshift(intro);
+    }
+    return sentences;
+}
+
+
 function run(section, index, sections) {
+    // TODO for multiple: true
     inquirer.prompt(section).then(function(answers){
         prettify(answers, null, '  ');
+        var sentences = processAnswers(answers, infos[index]);
+        console.log(sentences);
         if (sections[++index]) {
             run.call(null, sections[index], index, sections);
         }
