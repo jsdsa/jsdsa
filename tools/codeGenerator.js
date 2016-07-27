@@ -76,54 +76,114 @@ function constructSection(info, cb) {
 
 var infos = [
         { /* Zeroth section bhagwan ke naam, I am an Indian B-) */
+            main: {
 
+            },
+            extras: {
+                seperator: '',
+                prefix: '',
+                suffix: '',
+                startWith: '',
+                endWith: '',
+                replacer: '' // If replacer is present, then above may not be required
+            }
         },
         { /* First section, the introduction section */
-            'Name' : 'Name of the Algorithm/DataStructure [M]:', // Name should always be first
-            'Class' : 'Class (Ex. Sorting) [O]:',
-            'Data Structure' : 'Data Structure involved (Ex. Array) [O]:',
-            'Time Complexity' : 'Time Complexity (Ex. O(logn)) [O]:',
-            'Description' : 'Description [O]:',
-            'Resources' : 'Resource [O]:',
-            'Extras' : 'Extras (any extra relevant info or link) [O]:',
-            'Contributors' : 'Your Name and Emailid (add yourself as contributor) [O]:'
+            main: {
+                '<Name>' : 'Name of the Algorithm/DataStructure [M]:', // Name should always be first
+                'Class' : 'Class (Ex. Sorting) [O]:',
+                'Data Structure' : 'Data Structure involved (Ex. Array) [O]:',
+                'Time Complexity' : 'Time Complexity (Ex. O(logn)) [O]:',
+                'Description' : 'Description [O]:',
+                'Resources' : 'Resource [O]:',
+                'Extras' : 'Extras (any extra relevant info or link) [O]:',
+                'Contributors' : 'Your Name and Emailid (add yourself as contributor) [O]:'
+            },
+            extras: {
+                seperator: ': ',
+                prefix: ' ',
+                suffix: '\n',
+                startWith: '',
+                endWith: ''
+            }
         },
         { /* Second section, the Require Calls section */
-            '<ModuleName>': 'Name of the Module to require [M]:',
-            '<Var>' : 'Enter the variable name to store the module [M]:'
+            main: {
+                '<Var>' : 'Enter the variable name to store the module [M]:',
+                '<ModuleName>': 'Name of the Module to require [M]:'
+            },
+            extras: {
+                intro: '/** Require calls */\n',
+                prefix: '    ',
+                suffix: ',\n',
+                startWith: 'var ',
+                endWith: ';',
+                replacer: '<Var> = require(\'<ModuleName>\')',
+                multiple: true
+            }
         },
         { /* Third section, cache the methods to call later */
-            '<Method>': 'Method to Cache/Value of Global variable [M]:',
-            '<Var>': 'Enter the variable name to store it [M]:'
+            main: {
+                '<Var>': 'Enter the variable name to store method/value [M]:',
+                '<Method>': 'Method to Cache/Value of Global variable [M]:'
+            },
+            extras: {
+                intro: '/** Cache methods or assign Globals */\n',
+                prefix: '    ',
+                suffix: ',\n',
+                startWith: 'var ',
+                endWith: ';',
+                replacer: '<Var> = <Method>',
+                multiple: true
+            }
         },
         { /* Fourth section, give the function name and description */
-            '<FunctionName>': 'Name of the Function [M]:' ,
-            '<ShortDescription>': 'Short description of the function [O]:'
+            main: {
+                '<FunctionName>': 'Name of the Function [M]:' ,
+                '<ShortDescription>': 'Short description of the function [O]:'
+            },
+            extras: {
+                replacer: ' <FunctionName>:\n     <ShortDescription>\n'
+            }
         },
         { /* Fifth section, give parameter type, name and description */
-            '<ParamName>': 'Give the parameter name [M]:',
-            '<Type>': {
-                type: 'rawlist',
-                'message': 'Type of parameter [M]:',
-                'choices': VARTYPES
+            main: {
+                '<ParamName>': 'Give the parameter name [M]:',
+                '<Type>': {
+                    type: 'rawlist',
+                    message: 'Type of parameter [M]:',
+                    choices: VARTYPES
+                },
+                '<VarType>': {
+                    type: 'list',
+                    message: 'Variable type of parameter [M]:',
+                    choices: VARCHOICES
+                },
+                '<ShortParamDescription>': 'Short description for this parameter [O]:'
             },
-            '<VarType>': {
-                'type': 'list',
-                'message': 'Variable type of parameter [M]:',
-                'choices': VARCHOICES
-            },
-            '<ShortParamDescription>': 'Short description for this parameter [O]:'
+            extras: {
+                replacer: ' <Type>\n @param {<VarType>} [<ParamName>] <ShortParamDescription>\n',
+                multiple: true
+            }
         },
         { /* Sixth section, export module */
-            '<FunctionName>': {
-                type: 'input',
-                message: 'Name of the function to export [O]:',
-                'default': function(){ return 'testFunc' }
+            main: {
+                '<FunctionName>': {
+                    type: 'input',
+                    message: 'Name of the function to export [O]:',
+                    default: function(){ return 'testFunc' }
+                },
+                '<ModuleName>': {
+                    type: 'input',
+                    message: 'Name of the module to export [O]:',
+                    default: function(){ return 'testModule' }
+                }
             },
-            '<ModuleName>': {
-                type: 'input',
-                message: 'Name of the module to export [O]:',
-                'default': function(){ return 'testModule' }
+            extras: {
+                prefix: '',
+                suffix: ';\n',
+                intro: '/** Export the function as module */\n',
+                replacer: 'module.exports.<ModuleName> = <FunctionName>'
             }
         }
     ];
