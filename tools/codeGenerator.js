@@ -18,59 +18,6 @@ var VARTYPES = ['Required', 'Optional', 'Undocumented'],
     simpleReturn = function(o){ return o },
     prettify = function(){ console.log(JSON.stringify.apply(null, slice.call(arguments))) },
     sections = [];
-    infos = [
-        { /* Zeroth section bhagwan ke naam, I am an Indian B-) */
-
-        },
-        { /* First section, the introduction section */
-            'Name' : 'Name of the Algorithm/DataStructure [M]:', // Name should always be first
-            'Class' : 'Class (Ex. Sorting) [O]:',
-            'Data Structure' : 'Data Structure involved (Ex. Array) [O]:',
-            'Time Complexity' : 'Time Complexity (Ex. O(logn)) [O]:',
-            'Description' : 'Description [O]:',
-            'Resources' : 'Resource [O]:',
-            'Extras' : 'Extras (any extra relevant info or link) [O]:',
-            'Contributors' : 'Your Name and Emailid (add yourself as contributor) [O]:'
-        },
-        { /* Second section, the Require Calls section */
-            '<ModuleName>': 'Name of the Module to require [M]:',
-            '<Var>' : 'Enter the variable name to store the module [M]:'
-        },
-        { /* Third section, cache the methods to call later */
-            '<Method>': 'Method to Cache/Value of Global variable [M]:',
-            '<Var>': 'Enter the variable name to store it [M]:'
-        },
-        { /* Fourth section, give the function name and description */
-            '<FunctionName>': 'Name of the Function [M]:' ,
-            '<ShortDescription>': 'Short description of the function [O]:'
-        },
-        { /* Fifth section, give parameter type, name and description */
-            '<ParamName>': 'Give the parameter name [M]:',
-            '<Type>': {
-                type: 'rawlist',
-                'message': 'Type of parameter [M]:',
-                'choices': VARTYPES
-            },
-            '<VarType>': {
-                'type': 'list',
-                'message': 'Variable type of parameter [M]:',
-                'choices': VARCHOICES
-            },
-            '<ShortParamDescription>': 'Short description for this parameter [O]:'
-        },
-        { /* Sixth section, export module */
-            '<FunctionName>': {
-                type: 'input',
-                message: 'Name of the function to export [O]:',
-                'default': function(){ return 'testFunc' }
-            },
-            '<ModuleName>': {
-                type: 'input',
-                message: 'Name of the module to export [O]:',
-                'default': function(){ return 'testModule' }
-            }
-        }
-    ];
 
 /**
  *  commentify:
@@ -126,6 +73,60 @@ function constructSection(info, cb) {
     }
     return cb(section);
 }
+
+var infos = [
+        { /* Zeroth section bhagwan ke naam, I am an Indian B-) */
+
+        },
+        { /* First section, the introduction section */
+            'Name' : 'Name of the Algorithm/DataStructure [M]:', // Name should always be first
+            'Class' : 'Class (Ex. Sorting) [O]:',
+            'Data Structure' : 'Data Structure involved (Ex. Array) [O]:',
+            'Time Complexity' : 'Time Complexity (Ex. O(logn)) [O]:',
+            'Description' : 'Description [O]:',
+            'Resources' : 'Resource [O]:',
+            'Extras' : 'Extras (any extra relevant info or link) [O]:',
+            'Contributors' : 'Your Name and Emailid (add yourself as contributor) [O]:'
+        },
+        { /* Second section, the Require Calls section */
+            '<ModuleName>': 'Name of the Module to require [M]:',
+            '<Var>' : 'Enter the variable name to store the module [M]:'
+        },
+        { /* Third section, cache the methods to call later */
+            '<Method>': 'Method to Cache/Value of Global variable [M]:',
+            '<Var>': 'Enter the variable name to store it [M]:'
+        },
+        { /* Fourth section, give the function name and description */
+            '<FunctionName>': 'Name of the Function [M]:' ,
+            '<ShortDescription>': 'Short description of the function [O]:'
+        },
+        { /* Fifth section, give parameter type, name and description */
+            '<ParamName>': 'Give the parameter name [M]:',
+            '<Type>': {
+                type: 'rawlist',
+                'message': 'Type of parameter [M]:',
+                'choices': VARTYPES
+            },
+            '<VarType>': {
+                'type': 'list',
+                'message': 'Variable type of parameter [M]:',
+                'choices': VARCHOICES
+            },
+            '<ShortParamDescription>': 'Short description for this parameter [O]:'
+        },
+        { /* Sixth section, export module */
+            '<FunctionName>': {
+                type: 'input',
+                message: 'Name of the function to export [O]:',
+                'default': function(){ return 'testFunc' }
+            },
+            '<ModuleName>': {
+                type: 'input',
+                message: 'Name of the module to export [O]:',
+                'default': function(){ return 'testModule' }
+            }
+        }
+    ];
 
 /** Construct each section from infos object */
 infos.forEach(function(val){
