@@ -38,4 +38,4 @@ function fileWriter(file, text, mode) {
 }
 
 /** Export the `fileWriter` function */
-module.exports.fileWriter = fileWriter;
+module.exports = fileWriter;

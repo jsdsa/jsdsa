@@ -30,4 +30,4 @@ function isFileExist(file, cb) {
 }
 
 /** Export the `isFileExist` function */
-module.exports.isFileExist = isFileExist;
+module.exports = isFileExist;
