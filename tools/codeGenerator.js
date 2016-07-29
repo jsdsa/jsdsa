@@ -6,11 +6,15 @@
 
 /** Require calls */
 var inquirer = require('inquirer'),
-    fs = require('fs');
+    fs = require('fs'),
+    isFileExist = require('./isFileExist'),
+    fileWriter = require('./fileWriter');
 
 /** Cache methods or assign Globals */
 var VARTYPES = ['Required', 'Optional', 'Undocumented'],
     VARCHOICES = ['String', 'Array', 'Number', 'Boolean', 'Object', 'Function', 'Null', 'Other'],
+    FILENAME = '',
+    FILEPATH = __dirname + '/../jsdsa/';
     slice = Array.prototype.slice,
     splice = Array.prototype.splice,
     toString = Object.prototype.toString,
@@ -297,10 +301,6 @@ function preprocessor() {
     processedSections[0] = commentify(processedSections[0]);
     processedSections[3] = commentify(processedSections[3].concat(processedSections[4]));
     splice.call(processedSections, 4, 1);
-    processedSections.forEach(function(val) {
-        console.log(val.join('\n'));
-        console.log('');
-    });
 }
 
 function repeater(section, count, index, allAnswers) {
@@ -308,7 +308,7 @@ function repeater(section, count, index, allAnswers) {
         next = args[4],
         nextArgs = args[5];
     if (args[1]--) {
-        inquirer.prompt(section).then(function(answers){
+        inquirer.prompt(section).then(function(answers) {
             prettify(answers, null, '  ');
             allAnswers.push(answers);
             repeater.apply(null, args);
@@ -322,16 +322,16 @@ function repeater(section, count, index, allAnswers) {
 
 function final() {
     preprocessor();
-    processedSections.forEach(function(val) {
-        var totalString = val.reduce(function(prev, curr) {
-            return prev + curr;
-        });
+    processedSections.forEach(function(val, index, array) {
+        var text = (index ? '\n\n' : '') + val.join('\n');
+        fileWriter(FILENAME, text);
     });
 }
 
 function run(section, index, sections) {
     var info = infos[index],
-        extras = info['extras']
+        extras = info['extras'];
+
     if (extras['multiple']) {
         var question = multipleInput,
             message;
@@ -342,7 +342,7 @@ function run(section, index, sections) {
             repeater(section, count, index, allAnswers, run, [sections[++index], index, sections]);
         });
     } else {
-        inquirer.prompt(section).then(function(answers){
+        inquirer.prompt(section).then(function(answers) {
             prettify(answers, null, '  ');
             var sentences = processAnswers(answers, infos[index]);
             processedSections.push(sentences);
@@ -354,4 +354,57 @@ function run(section, index, sections) {
         });
     }
 }
-run(sections[1], 1, sections);
+
+var fileNameQuestion = [
+        {
+            type: 'input',
+            name: 'filename',
+            message: 'Enter the file name:'
+        }
+    ],
+    fileExistConfirmation = [
+        {
+            type: 'expand',
+            message: 'File already exists, do you want to overwrite?',
+            name: 'overwrite',
+            choices: [
+                {
+                    key: 'y',
+                    name: 'Yes',
+                    value: true
+                },
+                {
+                    key: 'n',
+                    name: 'No',
+                    value: false
+                }
+            ]
+        }
+    ];
+
+function getFileName() {
+    inquirer.prompt(fileNameQuestion).then(function(fileNameObj) {
+        if (isFileExist(fileNameObj['filename'])) {
+            inquirer.prompt(fileExistConfirmation).then(function(answers) {
+                if (!answers['overwrite']) {
+                    getFileName();
+                } else {
+                    FILENAME = FILEPATH + fileNameObj['filename'];
+                    main();
+                }
+            });
+        } else {
+            FILENAME = FILEPATH + fileNameObj['filename'];
+            main();
+        }
+    });
+}
+
+function main() {
+    if (!FILENAME) {
+        getFileName();
+    } else {
+        run(sections[1], 1, sections);
+    }
+}
+main();
