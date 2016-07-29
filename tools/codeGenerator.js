@@ -414,7 +414,7 @@ var fileNameQuestion = [
 
 function getFileName() {
     inquirer.prompt(fileNameQuestion).then(function(fileNameObj) {
-        if (isFileExist(fileNameObj['filename'])) {
+        if (isFileExist(FILEPATH + fileNameObj['filename'])) {
             inquirer.prompt(fileExistConfirmation).then(function(answers) {
                 if (!answers['overwrite']) {
                     getFileName();
