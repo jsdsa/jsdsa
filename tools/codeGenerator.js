@@ -327,13 +327,20 @@ function final() {
             return prev + curr;
         });
     });
-    // console.log(processedSections);
 }
 
 function run(section, index, sections) {
-    // TODO for multiple: true
-    if (infos[index]['extras']['multiple']) {
-        // TODO
+    var info = infos[index],
+        extras = info['extras']
+    if (extras['multiple']) {
+        var question = multipleInput,
+            message;
+        !!(message = extras['multipleMessage']) && (question['message'] = message);
+        inquirer.prompt(multipleInput).then(function(answers) {
+            var count = answers['count'] << 0,
+                allAnswers = [];
+            repeater(section, count, index, allAnswers, run, [sections[++index], index, sections]);
+        });
     } else {
         inquirer.prompt(section).then(function(answers){
             prettify(answers, null, '  ');
