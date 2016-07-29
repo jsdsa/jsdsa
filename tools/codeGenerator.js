@@ -121,7 +121,8 @@ var infos = [
                 startWith: 'var ',
                 endWith: ';',
                 replacer: '<Var> = require(\'<ModuleName>\')',
-                multiple: true
+                multiple: true,
+                multipleMessage: 'How many modules to require?:'
             }
         },
         { /* Third section, cache the methods to call later */
@@ -136,7 +137,8 @@ var infos = [
                 startWith: 'var ',
                 endWith: ';',
                 replacer: '<Var> = <Method>',
-                multiple: true
+                multiple: true,
+                multipleMessage: 'How many methods to cache/Global values?:'
             }
         },
         { /* Fourth section, give the function name and description */
@@ -165,7 +167,8 @@ var infos = [
             },
             extras: {
                 replacer: ' <Type>\n @param {<VarType>} [<ParamName>] <ShortParamDescription>\n',
-                multiple: true
+                multiple: true,
+                multipleMessage: 'Number of parameters of the function?:'
             }
         },
         { /* Sixth section, export module */
@@ -233,10 +236,6 @@ function processAnswers(answers, info) {
         replacer = extras['replacer'],
         keys = getKeys(extras);
 
-    if (extras['multiple']) {
-        // TODO
-    }
-
     if (replacer) {
         for (var key in answers) {
             replacer = replacer.replace(key, answers[key]);
@@ -295,15 +294,19 @@ function final() {
 
 function run(section, index, sections) {
     // TODO for multiple: true
-    inquirer.prompt(section).then(function(answers){
-        prettify(answers, null, '  ');
-        var sentences = processAnswers(answers, infos[index]);
-        processedSections.push(sentences);
-        if (sections[++index]) {
-            run.call(null, sections[index], index, sections);
-        } else {
-            final();
-        }
-    });
+    if (infos[index]['extras']['multiple']) {
+        // TODO
+    } else {
+        inquirer.prompt(section).then(function(answers){
+            prettify(answers, null, '  ');
+            var sentences = processAnswers(answers, infos[index]);
+            processedSections.push(sentences);
+            if (sections[++index]) {
+                run.call(null, sections[index], index, sections);
+            } else {
+                final();
+            }
+        });
+    }
 }
 run(sections[1], 1, sections);
