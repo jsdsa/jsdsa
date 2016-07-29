@@ -138,7 +138,7 @@ var infos = [
                 endWith: ';',
                 replacer: '<Var> = <Method>',
                 multiple: true,
-                multipleMessage: 'How many methods to cache/Global values?:'
+                multipleMessage: 'Number of methods to cache/Global values?:'
             }
         },
         { /* Fourth section, give the function name and description */
