@@ -167,7 +167,7 @@ var infos = [
                 '<ShortParamDescription>': 'Short description for this parameter [O]:'
             },
             extras: {
-                replacer: ' <Type>\n @param {<VarType>} [<ParamName>] <ShortParamDescription>\n',
+                replacer: ' <Type>:\n @param {<VarType>} [<ParamName>] <ShortParamDescription>\n',
                 multiple: true,
                 multipleMessage: 'Number of parameters of the function?:'
             }
