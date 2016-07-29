@@ -19,6 +19,7 @@ var VARTYPES = ['Required', 'Optional', 'Undocumented'],
     splice = Array.prototype.splice,
     toString = Object.prototype.toString,
     getKeys = Object.keys,
+    hasOwnProperty = Object.prototype.hasOwnProperty,
     nonEmpty = function(e){ return e != '' },
     simpleReturn = function(o){ return o },
     prettify = function(){ console.log(JSON.stringify.apply(null, slice.call(arguments))) },
@@ -299,7 +300,34 @@ function preprocessor() {
         array[index] = splitter(val, '\n');
     });
     processedSections[0] = commentify(processedSections[0]);
+
+    var section4 = processedSections[4],
+        newSection4 = {};
+    for (var i = 0; i < section4.length; i += 2) {
+        var first = section4[i],
+            second = section4[i+1];
+        if (!(first in newSection4)) {
+            newSection4[first] = [];
+        }
+        if (second)
+            newSection4[first].push(second);
+    }
+    section4 = [];
+    for (var property in newSection4) {
+        if (hasOwnProperty.call(newSection4, property)) {
+            section4.push(property);
+            var entries = newSection4[property];
+            if (entries.length) {
+                entries.forEach(function(val) {
+                    section4.push(val)
+                });
+                section4.push('');
+            }
+        }
+    }
+    processedSections[4] = section4;
     processedSections[3] = commentify(processedSections[3].concat(processedSections[4]));
+    processedSections[3].push('function FunctionName(arguments) {\n    // code\n}');
     splice.call(processedSections, 4, 1);
 }
 
@@ -309,8 +337,8 @@ function repeater(section, count, index, allAnswers) {
         nextArgs = args[5];
     if (args[1]--) {
         inquirer.prompt(section).then(function(answers) {
-            prettify(answers, null, '  ');
             allAnswers.push(answers);
+            console.log('');
             repeater.apply(null, args);
         });
         return;
@@ -326,6 +354,7 @@ function final() {
         var text = (index ? '\n\n' : '') + val.join('\n');
         fileWriter(FILENAME, text);
     });
+    console.log('File ' + BASEFILE + ' successfully written...');
 }
 
 function run(section, index, sections) {
@@ -343,7 +372,8 @@ function run(section, index, sections) {
         });
     } else {
         inquirer.prompt(section).then(function(answers) {
-            prettify(answers, null, '  ');
+            console.log('');
+            // prettify(answers, null, '  ');
             var sentences = processAnswers(answers, infos[index]);
             processedSections.push(sentences);
             if (sections[++index]) {
@@ -389,12 +419,14 @@ function getFileName() {
                 if (!answers['overwrite']) {
                     getFileName();
                 } else {
-                    FILENAME = FILEPATH + fileNameObj['filename'];
+                    BASEFILE = fileNameObj['filename'];
+                    FILENAME = FILEPATH + BASEFILE;
                     main();
                 }
             });
         } else {
-            FILENAME = FILEPATH + fileNameObj['filename'];
+            BASEFILE = fileNameObj['filename'];
+            FILENAME = FILEPATH + BASEFILE;
             main();
         }
     });
