@@ -17,7 +17,7 @@ var fs = require('fs');
  *  @param {Function} [cb] callback function
  *
  *  @returns {Function} `if` file exists, Return `true`
- *                  `else` Return `false` as argument in the callback
+ *                      `else` Return `false` as argument in the callback
  */
 function isFileExist(file, cb) {
 	cb = cb || function (o){ return o; };
@@ -30,4 +30,4 @@ function isFileExist(file, cb) {
 }
 
 /** Export the `isFileExist` function */
-module.exports.isFileExist = isFileExist;
+module.exports = isFileExist;
