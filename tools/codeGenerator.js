@@ -191,7 +191,15 @@ var infos = [
                 replacer: 'module.exports.<ModuleName> = <FunctionName>'
             }
         }
-    ];
+    ],
+    multipleInput = {
+        type: 'input',
+        name: 'count',
+        message: 'Multiple input demo message',
+        validate: function(e) {
+            return e == e << 0 && nonEmpty(e);
+        }
+    };
 
 /** Construct each section from infos object */
 infos.forEach(function(val){
