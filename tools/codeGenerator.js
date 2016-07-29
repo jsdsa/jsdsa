@@ -268,8 +268,10 @@ function processAnswers(answers, info) {
         });
     }
     var length = sentences.length;
-    sentences[0] = sentences[0].replace(prefix, startWith); // Replace prefix with startWith
-    sentences[length - 1] = sentences[length - 1].replace(new RegExp(suffix + '$'), endWith); // Replace suffix with endWith
+    if (length) {
+        sentences[0] = sentences[0].replace(prefix, startWith); // Replace prefix with startWith
+        sentences[length - 1] = sentences[length - 1].replace(new RegExp(suffix + '$'), endWith); // Replace suffix with endWith
+    }
 
     if (intro) { // Intentionally at the last
         sentences.unshift(intro);
