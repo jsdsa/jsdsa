@@ -303,6 +303,23 @@ function preprocessor() {
     });
 }
 
+function repeater(section, count, index, allAnswers) {
+    var args = slice.call(arguments),
+        next = args[4],
+        nextArgs = args[5];
+    if (args[1]--) {
+        inquirer.prompt(section).then(function(answers){
+            prettify(answers, null, '  ');
+            allAnswers.push(answers);
+            repeater.apply(null, args);
+        });
+        return;
+    }
+    var sentences = processAnswers(allAnswers, infos[index]);
+    processedSections.push(sentences);
+    next.apply(null, nextArgs);
+}
+
 function final() {
     preprocessor();
     processedSections.forEach(function(val) {
