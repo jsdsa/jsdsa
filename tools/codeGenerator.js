@@ -299,7 +299,8 @@ function preprocessor() {
     splice.call(processedSections, 4, 1);
     processedSections.forEach(function(val) {
         console.log(val.join('\n'));
-    })
+        console.log('');
+    });
 }
 
 function final() {
