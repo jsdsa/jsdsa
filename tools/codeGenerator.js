@@ -245,18 +245,27 @@ function processAnswers(answers, info) {
         replacer = extras['replacer'],
         keys = getKeys(extras);
 
+    if (toString.call(answers) !== '[object Array]') {
+        answers = [answers];
+    }
+
     if (replacer) {
-        for (var key in answers) {
-            replacer = replacer.replace(key, answers[key]);
-        }
-        replacer = prefix + replacer + suffix;
-        sentences.push(replacer);
+        answers.forEach(function(answer) {
+            var replacedSentence = replacer;
+            for (var key in answer) {
+                replacedSentence = replacedSentence.replace(key, answer[key]);
+            }
+            replacedSentence = prefix + replacedSentence + suffix;
+            sentences.push(replacedSentence);
+        });
     } else {
         var seperator = extras['seperator'];
-        for (var key in answers) {
-            var sentence = prefix + sentenceGenerator(key, answers[key], seperator) + suffix;
-            sentences.push(sentence);
-        }
+        answers.forEach(function(answer) {
+            for (var key in answer) {
+                var sentence = prefix + sentenceGenerator(key, answer[key], seperator) + suffix;
+                sentences.push(sentence);
+            }
+        });
     }
     var length = sentences.length;
     sentences[0] = sentences[0].replace(prefix, startWith); // Replace prefix with startWith
