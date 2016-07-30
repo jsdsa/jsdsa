@@ -8,3 +8,7 @@ node_js:
 env:
   global:
     secure: cv7j2o64CN128Bl6NG1Q1rDmsoI3xAQmUDnTtxIjVE6juaT78pimP+SCaaPeYv0xsWXHPOoEKQubVU/oZtgruSo/VtOicW/kzAr+O8iuQWF8sHNvFu7SrVcYtlyTAXX0sHWiBt5it4TVGhobM4MNTJlIbZLYEVgYyQfgWKT/fvxDg4BI3HDVEBgpae4tINttYxh2Geqk3KpccSonbkBr/NDWgEhGkyYmYrgMVbbEPsthiKxFpBmv4mcgJaliFYoBC1YLSf7Om6lpHPYoYCQx9k/4C7jt8kQfVqyfI2wVh/FUjtVzX26p1SJsy1lj58tJgfzjY/Kn7sfThu2G/HGhb1qw4je0zQ7+PK4/+0w0uX1kC++ofpfjncaDTy7tuq8lXM+TiGKniBcPsFixXARXj1oz4KZRIvXnZck38/cVwdM1i4KaN3cKXDS4kihBgiGJWVdNuu2quZ0oZh0H14p9k+dQ+Db3vhE3K/BootmMiNxvsKx/sIOGzXdUe2GUqygG0wx6Bq0eeR9vOG9vDXcrLhm1Wsb+2nN26Q8KmbG219+Jhmp1J5775H3H8NpY5ZiZ7iKcc4GUzVJ4csaRL4T3Rh55crhWo56apqNiUMnhY9aH9YEqfzlz+ZWx1r/37e4zHkiI/4A+ZwfCz03tfyr/fu8ZNgKbLlulCE/bLkBEyp8=
+before_script:
+  - npm install --save-dev
+script:
+  npm test
