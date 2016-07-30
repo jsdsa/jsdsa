@@ -30,7 +30,7 @@ function selectionSort(array, low, up) {
 	low = low || 0;
 	up = up || array.length - 1;
 
-	for (var i = 0; i < up; i++) {
+	for (var i = low; i < up; i++) {
 		var min = array[i],
 			minIndex = i;
 		for (var j = i + 1; j <= up; j++) {
