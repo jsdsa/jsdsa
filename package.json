@@ -5,12 +5,14 @@
   "author": "ironmaniiith <aalekhj2507@gmail.com> (https://github.com/ironmaniiith)",
   "main": "index.js",
   "scripts": {
+    "jshint": "ls ./jsdsa/*.js | grep -v \"format.js\" | while read i; do echo Checking $i && $jshint $i; done",
     "test": "cd tests; for i in *.js; do echo Testing $i && node $i; done"
   },
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
     "fs": "0.0.2",
-    "inquirer": "^1.1.2"
+    "inquirer": "^1.1.2",
+    "jshint": "^2.9.2"
   }
 }
