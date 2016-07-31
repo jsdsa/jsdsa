@@ -6,3 +6,4 @@ module.exports.insertionSort = require('./insertionSort').insertionSort;
 module.exports.bubbleSort = require('./bubbleSort').bubbleSort;
 module.exports.quickSort = require('./quickSort').quickSort;
 module.exports.radixSort = require('./radixSort').radixSort;
+module.exports.countingSort = require('./countingSort').countingSort;
