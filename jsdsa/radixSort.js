@@ -28,18 +28,20 @@ var Floor = Math.floor;
  */
 function radixSort(array, maxLength) {
 	maxLength = maxLength || 10; // TODO: Add maxLength finder
-	var placeValue = 1;
-		buckets = generateBuckets(10);
+	var placeValue = 1,
+		buckets = generateBuckets(10),
+		i;
 	
 	while (maxLength--) {
-		for (var i = 0; i < array.length; i++) {
+		for (i = 0; i < array.length; i++) {
 			var digit = getDigitAtPlaceValue(array[i], placeValue);
 			buckets[digit].push(array[i]);
 		}
 		var index = 0;
-		for (var i = 0; i < buckets.length; i++) {
-			var bucket = buckets[i];
-			for (var j = 0; j < bucket.length; j++) {
+		for (i = 0; i < buckets.length; i++) {
+			var bucket = buckets[i],
+				j;
+			for (j = 0; j < bucket.length; j++) {
 				array[index++] = bucket[j];
 			}
 			buckets[i] = [];
@@ -58,8 +60,9 @@ function radixSort(array, maxLength) {
  *  @returns {Array} returns generated buckets of given length
  */
 function generateBuckets(length) {
-	var buckets = new Array(length);
-	for (var i = 0; i < buckets.length; i++) {
+	var buckets = new Array(length),
+		i;
+	for (i = 0; i < buckets.length; i++) {
 		buckets[i] = [];
 	}
 	return buckets;

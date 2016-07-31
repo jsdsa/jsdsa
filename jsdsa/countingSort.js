@@ -28,11 +28,12 @@ var MAX = 1e6 << 0;
  */
 function countingSort(array, maxValue) {
 	maxValue = maxValue || MAX;
-	var countArray = new Array(maxValue + 1);
+	var countArray = new Array(maxValue + 1),
+		i;
 
-	for (var i = 0; i <= maxValue; i++) countArray[i] = 0;
+	for (i = 0; i <= maxValue; i++) countArray[i] = 0;
 
-	for (var i = 0; i < array.length; i++) {
+	for (i = 0; i < array.length; i++) {
 		countArray[array[i]]++; 
 	}
 	var count = 0,

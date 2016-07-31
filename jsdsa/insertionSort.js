@@ -29,11 +29,11 @@
 function insertionSort(array, low, up) {
 	low = low || 0;
 	up = up || array.length - 1;
+	var i;
 
-	for (var i = low + 1; i <= up; i++) {
+	for (i = low + 1; i <= up; i++) {
 		var val = array[i],
 			j = i;
-
 		while (j > 0 && array[j - 1] > val) {
 			array[j] = array[j - 1];
 			j--;

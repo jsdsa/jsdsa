@@ -29,11 +29,13 @@
 function selectionSort(array, low, up) {
 	low = low || 0;
 	up = up || array.length - 1;
+	var i;
 
-	for (var i = low; i < up; i++) {
+	for (i = low; i < up; i++) {
 		var min = array[i],
-			minIndex = i;
-		for (var j = i + 1; j <= up; j++) {
+			minIndex = i,
+			j;
+		for (j = i + 1; j <= up; j++) {
 			if (array[j] < min) {
 				min = array[j];
 				minIndex = j;

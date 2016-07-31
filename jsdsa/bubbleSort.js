@@ -29,9 +29,11 @@
 function bubbleSort(array, low, up) {
 	low = low || 0;
 	up = up || array.length - 1;
-	
-	for (var i = low; i < up; i++) {
-		for (var j = low; j < up - i; j++) {
+	var i;
+
+	for (i = low; i < up; i++) {
+		var j;
+		for (j = low; j < up - i; j++) {
 			if (array[j] > array[j + 1]) {
 				var temp = array[j];
 				array[j] = array[j + 1];

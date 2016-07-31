@@ -31,9 +31,10 @@ function linearSearch(array, key, low, up, length) {
     length = length || array.length;
     low = low || 0;
     up = up || length - 1;
+    var i;
 
     /** Linear Search begins */
-    for (var i = low; i <= up; i++) {
+    for (i = low; i <= up; i++) {
         if (array[i] === key) {
             return i; // Key found
         }

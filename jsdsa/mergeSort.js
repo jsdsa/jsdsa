@@ -27,7 +27,7 @@ var Floor = Math.floor;
  */
 function mergeSort(array, low, up) {
     if (low >= up) {
-        return ;
+        return;
     } else {
         var mid = Floor((low + up) / 2);
         mergeSort(array, low, mid);
@@ -35,7 +35,8 @@ function mergeSort(array, low, up) {
         var index = 0,
             auxArray = new Array((up - low + 1)),
             leftIndex = low,
-            rightIndex =  mid + 1;
+            rightIndex =  mid + 1,
+            i;
         
         while (leftIndex <= mid && rightIndex <= up) {
             var left = array[leftIndex],
@@ -54,10 +55,10 @@ function mergeSort(array, low, up) {
         while(rightIndex <= up) {
             auxArray[index++] = array[rightIndex++];
         }
-        for (var i = 0; i < auxArray.length; i++) {
+        for (i = 0; i < auxArray.length; i++) {
             array[low + i] = auxArray[i];
         }
-        return ;
+        return;
     }
 }
 
