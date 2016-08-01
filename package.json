@@ -5,6 +5,7 @@
   "author": "ironmaniiith <aalekhj2507@gmail.com> (https://github.com/ironmaniiith)",
   "main": "index.js",
   "scripts": {
+    "beautify": "ls ./jsdsa/*.js  | while read i; do ./node_modules/js-beautify/js/bin/js-beautify.js -r -n $i; done; ",
     "jshint": "ls ./jsdsa/*.js | grep -v \"format.js\" | while read i; do echo Checking $i && $jshint $i; if [ $? -ne 0 ]; then exit jshintError; fi; done;",
     "test": "cd tests; for i in *.js; do echo Testing $i && node $i; if [ $? -ne 0 ]; then exit testError; fi; done"
   },
@@ -13,6 +14,7 @@
     "chai": "^3.5.0",
     "fs": "0.0.2",
     "inquirer": "^1.1.2",
+    "js-beautify": "^1.6.3",
     "jshint": "^2.9.2"
   }
 }
