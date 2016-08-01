@@ -9,3 +9,4 @@ module.exports.radixSort = require('./radixSort').radixSort;
 module.exports.countingSort = require('./countingSort').countingSort;
 module.exports.bucketSort = require('./bucketSort').bucketSort;
 module.exports.combSort = require('./combSort').combSort;
+module.exports.shellSort = require('./shellSort').shellSort;
