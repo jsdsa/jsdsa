@@ -35,9 +35,9 @@ function mergeSort(array, low, up) {
         var index = 0,
             auxArray = new Array((up - low + 1)),
             leftIndex = low,
-            rightIndex =  mid + 1,
+            rightIndex = mid + 1,
             i;
-        
+
         while (leftIndex <= mid && rightIndex <= up) {
             var left = array[leftIndex],
                 right = array[rightIndex];

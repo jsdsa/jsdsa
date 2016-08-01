@@ -26,12 +26,12 @@
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function quickSort(array, low, up) {
-	if (low >= up) {
-		return;
-	}
-	var partitionIndex = partition(array, low, up);
-	quickSort(array, low, partitionIndex);
-	quickSort(array, partitionIndex + 1, up);
+    if (low >= up) {
+        return;
+    }
+    var partitionIndex = partition(array, low, up);
+    quickSort(array, low, partitionIndex);
+    quickSort(array, partitionIndex + 1, up);
 }
 
 /**
@@ -46,20 +46,20 @@ function quickSort(array, low, up) {
  *  @returns {Number} Partitions the given array, returns the partition index
  */
 function partition(array, low, up) {
-	var pivot = array[low],
-		i = low - 1,
-		j = up + 1;
+    var pivot = array[low],
+        i = low - 1,
+        j = up + 1;
 
-	while (true) {
-		while (array[++i] < pivot);
-		while (array[--j] > pivot && j > 0);
-		if (i >= j) {
-			return j;
-		}
-		var temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-	}
+    while (true) {
+        while (array[++i] < pivot);
+        while (array[--j] > pivot && j > 0);
+        if (i >= j) {
+            return j;
+        }
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
 
 /** Export the function as module */

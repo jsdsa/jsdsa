@@ -27,23 +27,23 @@ var MAX = 1e6 << 0;
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function countingSort(array, maxValue) {
-	maxValue = maxValue || MAX;
-	var countArray = new Array(maxValue + 1),
-		i;
+    maxValue = maxValue || MAX;
+    var countArray = new Array(maxValue + 1),
+        i;
 
-	for (i = 0; i <= maxValue; i++) countArray[i] = 0;
+    for (i = 0; i <= maxValue; i++) countArray[i] = 0;
 
-	for (i = 0; i < array.length; i++) {
-		countArray[array[i]]++; 
-	}
-	var count = 0,
-		index = 0;
-	while (count <= maxValue) {
-		while (countArray[count]--) {
-			array[index++] = count;
-		}
-		count++;
-	}
+    for (i = 0; i < array.length; i++) {
+        countArray[array[i]]++;
+    }
+    var count = 0,
+        index = 0;
+    while (count <= maxValue) {
+        while (countArray[count]--) {
+            array[index++] = count;
+        }
+        count++;
+    }
 }
 
 /** Export the function as module */

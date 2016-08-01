@@ -27,20 +27,20 @@
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function bubbleSort(array, low, up) {
-	low = low || 0;
-	up = up || array.length - 1;
-	var i;
+    low = low || 0;
+    up = up || array.length - 1;
+    var i;
 
-	for (i = low; i < up; i++) {
-		var j;
-		for (j = low; j < up - i; j++) {
-			if (array[j] > array[j + 1]) {
-				var temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
-			}
-		}
-	}
+    for (i = low; i < up; i++) {
+        var j;
+        for (j = low; j < up - i; j++) {
+            if (array[j] > array[j + 1]) {
+                var temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
 }
 
 /** Export the function as module */
