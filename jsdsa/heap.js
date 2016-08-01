@@ -97,6 +97,58 @@ function constructMinHeap(array, length) {
 	constructHeap(array, length, 'min');
 }
 
+/** Max-Heap Operations Starts From Here */
+/**
+ *  maxHeapify:
+ *      Max-heapify the array at current index
+ * 
+ *  Required:
+ *  @param {Array} [array] array to heapify (max heap)
+ *  @param {Number} [index] current index at which array needs to be heapified
+ * 
+ *  Optional:
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {undefined} Max-Heapify the given array at given index, returns nothing
+ */
+function maxHeapify(array, index, length) {
+	length = length || array.length;
+	var isHeapified = false,
+		half = Floor(length / 2) - 1;
+
+	while (!isHeapified && index < length) {
+		var val = array[index],
+			leftIndex = 2 * index + 1,
+			rightIndex = 2 * index + 2,
+			largerIndex = array[leftIndex] > array[rightIndex] ? leftIndex : rightIndex;
+		if (array[largerIndex] > array[index]) {
+			array[index] = array[largerIndex];
+			array[largerIndex] = val;
+			index = largerIndex;
+		} else {
+			isHeapified = true;
+		}
+	}
+}
+
+/**
+ *  constructMaxHeap:
+ *      Construct a max heap from the given array
+ * 
+ *  Required:
+ *  @param {Array} [array] array to convert into max heap
+ * 
+ *  Optional:
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {undefined} Calls the constructHeap function with type: 'max'
+ */
+function constructMaxHeap(array, length) {
+	length = length || array.length;
+	constructHeap(array, length, 'max');
+}
+
 /** Export the function as module */
 module.exports.constructHeap = constructHeap;
 module.exports.constructMinHeap = constructMinHeap;
+module.exports.constructMaxHeap = constructMaxHeap;
