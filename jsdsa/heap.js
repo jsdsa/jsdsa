@@ -46,5 +46,57 @@ function constructHeap(array, length, type) {
 	}
 }
 
+/** Min-Heap Operations Starts From Here */
+/**
+ *  minHeapify:
+ *      Min-heapify the array at current index
+ * 
+ *  Required:
+ *  @param {Array} [array] array to heapify (min heap)
+ *  @param {Number} [index] current index at which array needs to be heapified
+ * 
+ *  Optional:
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {undefined} Min-Heapify the given array at given index, returns nothing
+ */
+function minHeapify(array, index, length) {
+	length = length || array.length;
+	var isHeapified = false,
+		half = Floor(length / 2) - 1;
+
+	while (!isHeapified && index <= half) {
+		var val = array[index],
+			leftIndex = 2 * index + 1,
+			rightIndex = 2 * index + 2,
+			smallerIndex = array[leftIndex] < array[rightIndex] ? leftIndex : rightIndex;
+		if (array[smallerIndex] < array[index]) {
+			array[index] = array[smallerIndex];
+			array[smallerIndex] = val;
+			index = smallerIndex;
+		} else {
+			isHeapified = true;
+		}
+	}
+}
+
+/**
+ *  constructMinHeap:
+ *      Construct a min heap from the given array
+ * 
+ *  Required:
+ *  @param {Array} [array] array to convert into min heap
+ * 
+ *  Optional:
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {undefined} Calls the constructHeap function with type: 'min'
+ */
+function constructMinHeap(array, length) {
+	length = length || array.length;
+	constructHeap(array, length, 'min');
+}
+
 /** Export the function as module */
 module.exports.constructHeap = constructHeap;
+module.exports.constructMinHeap = constructMinHeap;
