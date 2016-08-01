@@ -52,7 +52,7 @@ function mergeSort(array, low, up) {
         while (leftIndex <= mid) {
             auxArray[index++] = array[leftIndex++];
         }
-        while(rightIndex <= up) {
+        while (rightIndex <= up) {
             auxArray[index++] = array[rightIndex++];
         }
         for (i = 0; i < auxArray.length; i++) {
