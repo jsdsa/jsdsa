@@ -30,16 +30,16 @@ function shellSort(array, gaps) {
     var up = array.length - 1;
 
     gaps.forEach(function(gap) {
-    	var i;
-    	for (i = gap; i <= up; i++) {
-    		var val = array[i],
-    			j = i;
-    		while (j >= gap && array[j - gap] > val) {
-    			array[j] = array[j - gap];
-    			j -= gap;
-    		}
-    		array[j] = val;
-    	}
+        var i;
+        for (i = gap; i <= up; i++) {
+            var val = array[i],
+                j = i;
+            while (j >= gap && array[j - gap] > val) {
+                array[j] = array[j - gap];
+                j -= gap;
+            }
+            array[j] = val;
+        }
     });
 }
 
