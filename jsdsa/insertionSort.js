@@ -27,19 +27,19 @@
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function insertionSort(array, low, up) {
-	low = low || 0;
-	up = up || array.length - 1;
-	var i;
+    low = low || 0;
+    up = up || array.length - 1;
+    var i;
 
-	for (i = low + 1; i <= up; i++) {
-		var val = array[i],
-			j = i;
-		while (j > 0 && array[j - 1] > val) {
-			array[j] = array[j - 1];
-			j--;
-		}
-		array[j] = val;
-	}
+    for (i = low + 1; i <= up; i++) {
+        var val = array[i],
+            j = i;
+        while (j > 0 && array[j - 1] > val) {
+            array[j] = array[j - 1];
+            j--;
+        }
+        array[j] = val;
+    }
 }
 
 /** Export the function as module */

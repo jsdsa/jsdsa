@@ -27,30 +27,30 @@ var Floor = Math.floor;
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function combSort(array, shrinkFactor) {
-	shrinkFactor = shrinkFactor || 1.3;
-	var length = array.length,
-		gap = length,
-		swapped,
-		i;
-	
-	while (true) {
-		gap = Floor(gap / shrinkFactor);
-		if (gap < 1) {
-			gap = 1;
-		}
-		swapped	= false;
-		for (i = 0; i + gap < length; i ++) {
-			if (array[i] > array[i + gap]) {
-				var temp = array[i];
-				array[i] = array[i + gap];
-				array[i + gap] = temp;
-				swapped = true;
-			}
-		}
-		if (gap <= 1 && !swapped) {
-			break;
-		}
-	}
+    shrinkFactor = shrinkFactor || 1.3;
+    var length = array.length,
+        gap = length,
+        swapped,
+        i;
+
+    while (true) {
+        gap = Floor(gap / shrinkFactor);
+        if (gap < 1) {
+            gap = 1;
+        }
+        swapped = false;
+        for (i = 0; i + gap < length; i++) {
+            if (array[i] > array[i + gap]) {
+                var temp = array[i];
+                array[i] = array[i + gap];
+                array[i + gap] = temp;
+                swapped = true;
+            }
+        }
+        if (gap <= 1 && !swapped) {
+            break;
+        }
+    }
 }
 
 /** Export the function as module */

@@ -14,8 +14,8 @@ var insertionSort = require('./insertionSort').insertionSort;
 
 /** Cache methods or assign Globals */
 var Ceil = Math.ceil,
-	Floor = Math.floor,
-	MAX = 1e6 << 0;
+    Floor = Math.floor,
+    MAX = 1e6 << 0;
 
 /**
  *  bucketSort:
@@ -31,31 +31,31 @@ var Ceil = Math.ceil,
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function bucketSort(array, range, bucketSize) {
-	range = range || MAX;
-	bucketSize = bucketSize || 1000;
-	var numberOfBuckets = Ceil(range / bucketSize),
-		container = [],
-		val,
-		i;
+    range = range || MAX;
+    bucketSize = bucketSize || 1000;
+    var numberOfBuckets = Ceil(range / bucketSize),
+        container = [],
+        val,
+        i;
 
-	for (i = 0; i < numberOfBuckets; i++) {
-		container.push([]);
-	}
-	for (i = 0; i < array.length; i++) {
-		val = array[i];
-		indexOfBucket = Floor(val / bucketSize);
-		container[indexOfBucket].push(val);
-	}
+    for (i = 0; i < numberOfBuckets; i++) {
+        container.push([]);
+    }
+    for (i = 0; i < array.length; i++) {
+        val = array[i];
+        indexOfBucket = Floor(val / bucketSize);
+        container[indexOfBucket].push(val);
+    }
 
-	var index = -1;
-	for (i = 0; i < container.length; i++) {
-		var j;
-		val = container[i];
-		insertionSort(val);
-		for (j = 0; j < val.length; j++) {
-			array[++index] = val[j];
-		}
-	}
+    var index = -1;
+    for (i = 0; i < container.length; i++) {
+        var j;
+        val = container[i];
+        insertionSort(val);
+        for (j = 0; j < val.length; j++) {
+            array[++index] = val[j];
+        }
+    }
 }
 
 /** Export the function as module */

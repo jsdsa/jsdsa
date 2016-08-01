@@ -27,27 +27,27 @@ var Floor = Math.floor;
  *  @returns {undefined} Sorts the given array, returns nothing
  */
 function radixSort(array, maxLength) {
-	maxLength = maxLength || 10; // TODO: Add maxLength finder
-	var placeValue = 1,
-		buckets = generateBuckets(10),
-		i;
-	
-	while (maxLength--) {
-		for (i = 0; i < array.length; i++) {
-			var digit = getDigitAtPlaceValue(array[i], placeValue);
-			buckets[digit].push(array[i]);
-		}
-		var index = 0;
-		for (i = 0; i < buckets.length; i++) {
-			var bucket = buckets[i],
-				j;
-			for (j = 0; j < bucket.length; j++) {
-				array[index++] = bucket[j];
-			}
-			buckets[i] = [];
-		}
-		placeValue *= 10;
-	}
+    maxLength = maxLength || 10; // TODO: Add maxLength finder
+    var placeValue = 1,
+        buckets = generateBuckets(10),
+        i;
+
+    while (maxLength--) {
+        for (i = 0; i < array.length; i++) {
+            var digit = getDigitAtPlaceValue(array[i], placeValue);
+            buckets[digit].push(array[i]);
+        }
+        var index = 0;
+        for (i = 0; i < buckets.length; i++) {
+            var bucket = buckets[i],
+                j;
+            for (j = 0; j < bucket.length; j++) {
+                array[index++] = bucket[j];
+            }
+            buckets[i] = [];
+        }
+        placeValue *= 10;
+    }
 }
 
 /**
@@ -60,12 +60,12 @@ function radixSort(array, maxLength) {
  *  @returns {Array} returns generated buckets of given length
  */
 function generateBuckets(length) {
-	var buckets = new Array(length),
-		i;
-	for (i = 0; i < buckets.length; i++) {
-		buckets[i] = [];
-	}
-	return buckets;
+    var buckets = new Array(length),
+        i;
+    for (i = 0; i < buckets.length; i++) {
+        buckets[i] = [];
+    }
+    return buckets;
 }
 
 /**
@@ -79,7 +79,7 @@ function generateBuckets(length) {
  *  @returns {Number} returns the extracted digit at the given placeValue
  */
 function getDigitAtPlaceValue(number, placeValue) {
-	return (Floor(number / placeValue)) % 10;
+    return (Floor(number / placeValue)) % 10;
 }
 
 /** Export the function as module */
