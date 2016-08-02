@@ -69,7 +69,7 @@ function minHeapify(array, index, length) {
 		var val = array[index],
 			leftIndex = 2 * index + 1,
 			rightIndex = 2 * index + 2,
-			smallerIndex = array[leftIndex] < array[rightIndex] ? leftIndex : rightIndex;
+			smallerIndex = array[rightIndex] < array[leftIndex] ? rightIndex: leftIndex;
 		if (array[smallerIndex] < array[index]) {
 			array[index] = array[smallerIndex];
 			array[smallerIndex] = val;
@@ -120,7 +120,7 @@ function maxHeapify(array, index, length) {
 		var val = array[index],
 			leftIndex = 2 * index + 1,
 			rightIndex = 2 * index + 2,
-			largerIndex = array[leftIndex] > array[rightIndex] ? leftIndex : rightIndex;
+			largerIndex = array[rightIndex] > array[leftIndex] ? rightIndex : leftIndex;
 		if (array[largerIndex] > array[index]) {
 			array[index] = array[largerIndex];
 			array[largerIndex] = val;
