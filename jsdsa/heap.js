@@ -20,7 +20,7 @@ var Floor = Math.floor,
         'min': function(a, b) {
             return a < b;
         }
-    }
+    };
 
 
 /**
