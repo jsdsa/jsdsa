@@ -77,6 +77,43 @@ function deleteTop(array, length) {
 	return top;
 }
 
+/** Balance heap operations */
+/**
+ *  balanceHeap:
+ *      Balances the given unbalanced heap (top element unbalanced)
+ * 
+ *  Required:
+ *  @param {Array} [array] unbalanced heapified array
+ *  @param {Number} [length] length of the array
+ *  @param {String} [type] type of heap to maintain (max or min)
+ * 
+ *  @returns {undefined} Balances the given unbalanced heapified array by shifting down the top value
+ */
+function balanceHeap(array, length, type) {
+	var compare = comparator[type],
+		index = 0;
+
+	array[0] = array[length - 1];
+	while (index < length - 1) {
+		var val = array[index],
+			leftIndex = 2 * index + 1,
+			rightIndex = 2 * index + 2,
+			childIndex;
+		if (compare(array[rightIndex], array[leftIndex])) {
+			childIndex = rightIndex;
+		} else {
+			childIndex = leftIndex;
+		}
+		if (compare(array[childIndex], val)) {
+			array[index] = array[childIndex];
+			array[childIndex] = val;
+			index = childIndex;
+		} else {
+			break;
+		}
+	}
+}
+
 /** Min-Heap Operations Starts From Here */
 /**
  *  minHeapify:
