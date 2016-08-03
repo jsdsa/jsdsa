@@ -35,24 +35,24 @@ var Floor = Math.floor,
  *  @returns {undefined} Constructs the given array into given type of heap
  */
 function constructHeap(array, length, type) {
-	if (!type) {
-		throw new Error('Please mention the type of heap to construct');
-	}
-	var half = Floor(length / 2) - 1,
-		heapifyFunction,
-		i;
+    if (!type) {
+        throw new Error('Please mention the type of heap to construct');
+    }
+    var half = Floor(length / 2) - 1,
+        heapifyFunction,
+        i;
 
-	switch (type) {
-		case 'max':
-			heapifyFunction = maxHeapify;
-			break;
-		case 'min':
-			heapifyFunction = minHeapify;
-			break;
-	}
-	for (i = half; i >= 0; i--) {
-		heapifyFunction(array, i, length);
-	}
+    switch (type) {
+        case 'max':
+            heapifyFunction = maxHeapify;
+            break;
+        case 'min':
+            heapifyFunction = minHeapify;
+            break;
+    }
+    for (i = half; i >= 0; i--) {
+        heapifyFunction(array, i, length);
+    }
 }
 
 /** Delete heap operation */
@@ -67,14 +67,14 @@ function constructHeap(array, length, type) {
  *  @returns {Number} `return` top element by replacing the top element of the heapified array with last element
  */
 function deleteTop(array, length) {
-	length = length || array.length;
-	if (!length) {
-		return -1;
-	}
-	var top = array[0];
-	array[0] = array[length - 1];
-	array.length--;
-	return top;
+    length = length || array.length;
+    if (!length) {
+        return -1;
+    }
+    var top = array[0];
+    array[0] = array[length - 1];
+    array.length--;
+    return top;
 }
 
 /** Balance heap operations */
@@ -90,28 +90,28 @@ function deleteTop(array, length) {
  *  @returns {undefined} Balances the given unbalanced heapified array by shifting down the top value
  */
 function balanceHeap(array, length, type) {
-	var compare = comparator[type],
-		index = 0;
+    var compare = comparator[type],
+        index = 0;
 
-	array[0] = array[length - 1];
-	while (index < length - 1) {
-		var val = array[index],
-			leftIndex = 2 * index + 1,
-			rightIndex = 2 * index + 2,
-			childIndex;
-		if (compare(array[rightIndex], array[leftIndex])) {
-			childIndex = rightIndex;
-		} else {
-			childIndex = leftIndex;
-		}
-		if (compare(array[childIndex], val)) {
-			array[index] = array[childIndex];
-			array[childIndex] = val;
-			index = childIndex;
-		} else {
-			break;
-		}
-	}
+    array[0] = array[length - 1];
+    while (index < length - 1) {
+        var val = array[index],
+            leftIndex = 2 * index + 1,
+            rightIndex = 2 * index + 2,
+            childIndex;
+        if (compare(array[rightIndex], array[leftIndex])) {
+            childIndex = rightIndex;
+        } else {
+            childIndex = leftIndex;
+        }
+        if (compare(array[childIndex], val)) {
+            array[index] = array[childIndex];
+            array[childIndex] = val;
+            index = childIndex;
+        } else {
+            break;
+        }
+    }
 }
 
 /**
@@ -125,8 +125,8 @@ function balanceHeap(array, length, type) {
  *  @returns {undefined} Balances the given unbalanced min-heapified array by shifting down the top value
  */
 function balanceMinHeap(array, length) {
-	length = length || array.length;
-	balanceHeap(array, length, 'min');
+    length = length || array.length;
+    balanceHeap(array, length, 'min');
 }
 
 /**
@@ -140,8 +140,8 @@ function balanceMinHeap(array, length) {
  *  @returns {undefined} Balances the given unbalanced max-heapified array by shifting down the top value
  */
 function balanceMaxHeap(array, length) {
-	length = length || array.length;
-	balanceHeap(array, length, 'max');
+    length = length || array.length;
+    balanceHeap(array, length, 'max');
 }
 
 /** Min-Heap Operations Starts From Here */
@@ -159,23 +159,23 @@ function balanceMaxHeap(array, length) {
  *  @returns {undefined} Min-Heapify the given array at given index, returns nothing
  */
 function minHeapify(array, index, length) {
-	length = length || array.length;
-	var isHeapified = false,
-		half = Floor(length / 2) - 1;
+    length = length || array.length;
+    var isHeapified = false,
+        half = Floor(length / 2) - 1;
 
-	while (!isHeapified && index <= half) {
-		var val = array[index],
-			leftIndex = 2 * index + 1,
-			rightIndex = 2 * index + 2,
-			smallerIndex = array[rightIndex] < array[leftIndex] ? rightIndex: leftIndex;
-		if (array[smallerIndex] < array[index]) {
-			array[index] = array[smallerIndex];
-			array[smallerIndex] = val;
-			index = smallerIndex;
-		} else {
-			isHeapified = true;
-		}
-	}
+    while (!isHeapified && index <= half) {
+        var val = array[index],
+            leftIndex = 2 * index + 1,
+            rightIndex = 2 * index + 2,
+            smallerIndex = array[rightIndex] < array[leftIndex] ? rightIndex : leftIndex;
+        if (array[smallerIndex] < array[index]) {
+            array[index] = array[smallerIndex];
+            array[smallerIndex] = val;
+            index = smallerIndex;
+        } else {
+            isHeapified = true;
+        }
+    }
 }
 
 /**
@@ -191,8 +191,8 @@ function minHeapify(array, index, length) {
  *  @returns {undefined} Calls the constructHeap function with type: 'min'
  */
 function constructMinHeap(array, length) {
-	length = length || array.length;
-	constructHeap(array, length, 'min');
+    length = length || array.length;
+    constructHeap(array, length, 'min');
 }
 
 /** Max-Heap Operations Starts From Here */
@@ -210,23 +210,23 @@ function constructMinHeap(array, length) {
  *  @returns {undefined} Max-Heapify the given array at given index, returns nothing
  */
 function maxHeapify(array, index, length) {
-	length = length || array.length;
-	var isHeapified = false,
-		half = Floor(length / 2) - 1;
+    length = length || array.length;
+    var isHeapified = false,
+        half = Floor(length / 2) - 1;
 
-	while (!isHeapified && index < length) {
-		var val = array[index],
-			leftIndex = 2 * index + 1,
-			rightIndex = 2 * index + 2,
-			largerIndex = array[rightIndex] > array[leftIndex] ? rightIndex : leftIndex;
-		if (array[largerIndex] > array[index]) {
-			array[index] = array[largerIndex];
-			array[largerIndex] = val;
-			index = largerIndex;
-		} else {
-			isHeapified = true;
-		}
-	}
+    while (!isHeapified && index < length) {
+        var val = array[index],
+            leftIndex = 2 * index + 1,
+            rightIndex = 2 * index + 2,
+            largerIndex = array[rightIndex] > array[leftIndex] ? rightIndex : leftIndex;
+        if (array[largerIndex] > array[index]) {
+            array[index] = array[largerIndex];
+            array[largerIndex] = val;
+            index = largerIndex;
+        } else {
+            isHeapified = true;
+        }
+    }
 }
 
 /**
@@ -242,8 +242,8 @@ function maxHeapify(array, index, length) {
  *  @returns {undefined} Calls the constructHeap function with type: 'max'
  */
 function constructMaxHeap(array, length) {
-	length = length || array.length;
-	constructHeap(array, length, 'max');
+    length = length || array.length;
+    constructHeap(array, length, 'max');
 }
 
 /** Export the function as module */
