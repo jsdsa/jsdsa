@@ -69,10 +69,9 @@ function constructHeap(array, length, type) {
 function deleteTop(array, length) {
     length = length || array.length;
     if (!length) {
-        return -1;
+        return null;
     }
     var top = array[0];
-    array[0] = array[length - 1];
     array.length--;
     return top;
 }
