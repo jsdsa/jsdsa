@@ -114,6 +114,36 @@ function balanceHeap(array, length, type) {
 	}
 }
 
+/**
+ *  balanceMinHeap:
+ *      Balances the given unbalanced min heap
+ * 
+ *  Required:
+ *  @param {Array} [array] unbalanced heapified array
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {undefined} Balances the given unbalanced min-heapified array by shifting down the top value
+ */
+function balanceMinHeap(array, length) {
+	length = length || array.length;
+	balanceHeap(array, length, 'min');
+}
+
+/**
+ *  balanceMaxHeap:
+ *      Balances the given unbalanced max heap
+ * 
+ *  Required:
+ *  @param {Array} [array] unbalanced heapified array
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {undefined} Balances the given unbalanced max-heapified array by shifting down the top value
+ */
+function balanceMaxHeap(array, length) {
+	length = length || array.length;
+	balanceHeap(array, length, 'max');
+}
+
 /** Min-Heap Operations Starts From Here */
 /**
  *  minHeapify:
