@@ -55,6 +55,28 @@ function constructHeap(array, length, type) {
 	}
 }
 
+/** Delete heap operation */
+/**
+ *  deleteTop:
+ *      Deletes the top element in the heap by replacing it with last element (if present)
+ * 
+ *  Required:
+ *  @param {Array} [array] heapified array
+ *  @param {Number} [length] length of the array
+ * 
+ *  @returns {Number} `return` top element by replacing the top element of the heapified array with last element
+ */
+function deleteTop(array, length) {
+	length = length || array.length;
+	if (!length) {
+		return -1;
+	}
+	var top = array[0];
+	array[0] = array[length - 1];
+	array.length--;
+	return top;
+}
+
 /** Min-Heap Operations Starts From Here */
 /**
  *  minHeapify:
