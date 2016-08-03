@@ -12,7 +12,16 @@
 /** Require calls */
 
 /** Cache methods or assign Globals */
-var Floor = Math.floor;
+var Floor = Math.floor,
+    comparator = {
+        'max': function(a, b) {
+            return a > b;
+        },
+        'min': function(a, b) {
+            return a < b;
+        }
+    }
+
 
 /**
  *  constructHeap:
