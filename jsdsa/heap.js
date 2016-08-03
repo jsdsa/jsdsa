@@ -72,7 +72,6 @@ function deleteTop(array, length) {
         return -1;
     }
     var top = array[0];
-    array[0] = array[length - 1];
     array.length--;
     return top;
 }
