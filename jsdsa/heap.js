@@ -250,3 +250,7 @@ function constructMaxHeap(array, length) {
 module.exports.constructHeap = constructHeap;
 module.exports.constructMinHeap = constructMinHeap;
 module.exports.constructMaxHeap = constructMaxHeap;
+module.exports.balanceHeap = balanceHeap;
+module.exports.balanceMaxHeap = balanceMaxHeap;
+module.exports.balanceMinHeap = balanceMinHeap;
+module.exports.deleteTop = deleteTop;
