@@ -24,3 +24,10 @@ function Node() {
 		return new Node();
 	}
 }
+
+function createNode(next, val) {
+	var node = new Node();
+	node.next = next;
+	node.val = val;
+	return node;
+}
