@@ -10,6 +10,7 @@
  */
 
 /** Require calls */
+var swap = require('./utils/swap');
 
 /** Cache methods or assign Globals */
 var Floor = Math.floor;
@@ -41,9 +42,7 @@ function combSort(array, shrinkFactor) {
         swapped = false;
         for (i = 0; i + gap < length; i++) {
             if (array[i] > array[i + gap]) {
-                var temp = array[i];
-                array[i] = array[i + gap];
-                array[i + gap] = temp;
+                swap(array, i, i + gap);
                 swapped = true;
             }
         }

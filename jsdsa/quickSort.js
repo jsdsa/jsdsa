@@ -11,6 +11,7 @@
  */
 
 /** Require calls */
+var swap = require('./utils/swap');
 
 /** Cache methods or assign Globals */
 
@@ -56,9 +57,7 @@ function partition(array, low, up) {
         if (i >= j) {
             return j;
         }
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        swap(array, i, j);
     }
 }
 

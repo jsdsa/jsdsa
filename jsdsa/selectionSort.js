@@ -10,6 +10,7 @@
  */
 
 /** Require calls */
+var swap = require('./utils/swap');
 
 /** Cache methods or assign Globals */
 
@@ -42,9 +43,7 @@ function selectionSort(array, low, up) {
             }
         }
         if (i !== minIndex) {
-            var temp = array[i];
-            array[i] = array[minIndex];
-            array[minIndex] = temp;
+            swap(array, i, minIndex);
         }
     }
 }

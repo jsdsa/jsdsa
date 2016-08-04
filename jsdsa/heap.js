@@ -10,6 +10,7 @@
  */
 
 /** Require calls */
+var swap = require('./utils/swap');
 
 /** Cache methods or assign Globals */
 var Floor = Math.floor,
@@ -21,7 +22,6 @@ var Floor = Math.floor,
             return a < b;
         }
     };
-
 
 /**
  *  constructHeap:
@@ -104,8 +104,7 @@ function balanceHeap(array, length, type) {
             childIndex = leftIndex;
         }
         if (compare(array[childIndex], val)) {
-            array[index] = array[childIndex];
-            array[childIndex] = val;
+            swap(array, index, childIndex);
             index = childIndex;
         } else {
             break;
@@ -168,8 +167,7 @@ function minHeapify(array, index, length) {
             rightIndex = 2 * index + 2,
             smallerIndex = array[rightIndex] < array[leftIndex] ? rightIndex : leftIndex;
         if (array[smallerIndex] < array[index]) {
-            array[index] = array[smallerIndex];
-            array[smallerIndex] = val;
+            swap(array, index, smallerIndex);
             index = smallerIndex;
         } else {
             isHeapified = true;
@@ -219,8 +217,7 @@ function maxHeapify(array, index, length) {
             rightIndex = 2 * index + 2,
             largerIndex = array[rightIndex] > array[leftIndex] ? rightIndex : leftIndex;
         if (array[largerIndex] > array[index]) {
-            array[index] = array[largerIndex];
-            array[largerIndex] = val;
+            swap(array, index, largerIndex);
             index = largerIndex;
         } else {
             isHeapified = true;

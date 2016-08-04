@@ -10,6 +10,7 @@
  */
 
 /** Require calls */
+var swap = require('./utils/swap');
 
 /** Cache methods or assign Globals */
 
@@ -35,9 +36,7 @@ function bubbleSort(array, low, up) {
         var j;
         for (j = low; j < up - i; j++) {
             if (array[j] > array[j + 1]) {
-                var temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+                swap(array, j, j + 1);
             }
         }
     }
