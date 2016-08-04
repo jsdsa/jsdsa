@@ -84,6 +84,24 @@ function deleteAtLast(head) {
 	}
 }
 
+function deleteVal(head, val) {
+	if (!head || head.val === val) {
+		if (!head) {
+			return null;
+		}
+		return head.next;
+	} else {
+		var front = head;
+		while (head.next && head.next.val !== val) {
+			head = head.next;
+		}
+		if (head.next && head.next.val === val) {
+			head.next = head.next.next;
+		}
+		return front;
+	}
+}
+
 function traverse(head) {
 	while (head) {
 		console.log(head.val);
