@@ -51,3 +51,14 @@ function insertAtLast(head, val) {
 		return front;
 	}
 }
+
+function insertEnd(back, val) {
+	var node = createNode(null, val);
+
+	if (!back) {
+		return node;
+	} else {
+		back.next = node;
+		return node;
+	}
+}
