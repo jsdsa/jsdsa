@@ -90,3 +90,19 @@ function traverse(head) {
 		head = head.next;
 	}
 }
+
+function reverse(head) {
+	var list = [],
+		node = null,
+		i = -1;
+
+	while (head) {
+		list.push(head.val);
+		head = head.next;
+	}
+	while (++i < list.length) {
+		var val = list[i];
+		node = insertStart(node, val);
+	}
+	return node;
+}
