@@ -102,6 +102,21 @@ function deleteVal(head, val) {
 	}
 }
 
+function update(head, val, newVal) {
+	if (!head) {
+		return null;
+	} else {
+		var front = head;
+		while (head && head.val !== val) {
+			head = head.next;
+		}
+		if (head.val === val) {
+			head.val = newVal;
+		}
+		return front;
+	}
+}
+
 function traverse(head) {
 	while (head) {
 		console.log(head.val);
