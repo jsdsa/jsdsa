@@ -62,3 +62,11 @@ function insertEnd(back, val) {
 		return node;
 	}
 }
+
+function deleteStart(head) {
+	if (!head) {
+		return null;
+	} else {
+		return head.next;
+	}
+}
