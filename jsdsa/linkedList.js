@@ -31,3 +31,23 @@ function createNode(next, val) {
 	node.val = val;
 	return node;
 }
+
+function insertStart(head, val) {
+	var node = createNode(head, val);
+	return node;
+}
+
+function insertAtLast(head, val) {
+	var front = head,
+		node = createNode(null, val);
+
+	if (!head) {
+		return node;
+	} else {
+		while (head.next) {
+			head = head.next;
+		}
+		head.next = node;
+		return front;
+	}
+}
