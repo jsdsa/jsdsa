@@ -70,3 +70,16 @@ function deleteStart(head) {
 		return head.next;
 	}
 }
+
+function deleteAtLast(head) {
+	if (!(head && head.next)) {
+		return null;
+	} else {
+		var front = head;
+		while (head.next.next) {
+			head = head.next;
+		}
+		head.next = null;
+		return front;
+	}
+}
