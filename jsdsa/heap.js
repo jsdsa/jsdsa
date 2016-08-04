@@ -69,7 +69,7 @@ function constructHeap(array, length, type) {
 function deleteTop(array, length) {
     length = length || array.length;
     if (!length) {
-        return -1;
+        return null;
     }
     var top = array[0];
     array[0] = array[length - 1];
@@ -93,7 +93,6 @@ function balanceHeap(array, length, type) {
     var compare = comparator[type],
         index = 0;
 
-    array[0] = array[length - 1];
     while (index < length - 1) {
         var val = array[index],
             leftIndex = 2 * index + 1,
