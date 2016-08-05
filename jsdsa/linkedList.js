@@ -10,7 +10,6 @@
 /** Require calls */
 
 /** Cache methods or assign Globals */
-// TODO: push, pop, update, show, remove, reverse, circularLinkedList
 
 /**
  *  Node:
@@ -25,6 +24,16 @@ function Node() {
 	}
 }
 
+/**
+ *  createNode:
+ *      Creates and returns a node with the given next node and value
+ * 
+ *  Required:
+ *  @param {Node} [next] next node of the new node to create
+ *  @param {Number} [val] value to assign to current node
+ * 
+ *  @returns {Node} Returns the node with next node as `next` and value as `val`
+ */
 function createNode(next, val) {
 	var node = new Node();
 	node.next = next;
@@ -32,11 +41,31 @@ function createNode(next, val) {
 	return node;
 }
 
+/**
+ *  insertStart:
+ *      Inserts a new node in the beginning of the linked list: O(1)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of the linked list
+ *  @param {Number} [val] value to assign to the node
+ * 
+ *  @returns {Node} Returns the newly created head node of the linked list
+ */
 function insertStart(head, val) {
 	var node = createNode(head, val);
 	return node;
 }
 
+/**
+ *  insertAtLast:
+ *      Inserts a new node at the last of the linked list: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of the linked list
+ *  @param {Number} [val] value to assign to the node
+ * 
+ *  @returns {Node} Returns the head node of the linked list with newly created last node
+ */
 function insertAtLast(head, val) {
 	var front = head,
 		node = createNode(null, val);
@@ -52,6 +81,16 @@ function insertAtLast(head, val) {
 	}
 }
 
+/**
+ *  insertEnd:
+ *      Inserts a new node at the end of linked list: O(1), uses last node pointer `back`
+ * 
+ *  Required:
+ *  @param {Node} [back] last node of linked list
+ *  @param {Number} [val] value to assign to the node
+ * 
+ *  @returns {Node} Returns the newly created last node of the linked list
+ */
 function insertEnd(back, val) {
 	var node = createNode(null, val);
 
@@ -63,6 +102,15 @@ function insertEnd(back, val) {
 	}
 }
 
+/**
+ *  deleteStart:
+ *      Deletes the starting node of the linked list: O(1)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of linked list
+ * 
+ *  @returns {Node} Returns the new head node after deleting the first node (head) of the linked list
+ */
 function deleteStart(head) {
 	if (!head) {
 		return null;
@@ -71,6 +119,15 @@ function deleteStart(head) {
 	}
 }
 
+/**
+ *  deleteAtLast:
+ *      Deletes the ending node of the linked list: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of linked list
+ * 
+ *  @returns {Node} Returns the head node after deleting the last node of the linked list
+ */
 function deleteAtLast(head) {
 	if (!(head && head.next)) {
 		return null;
@@ -84,6 +141,16 @@ function deleteAtLast(head) {
 	}
 }
 
+/**
+ *  deleteVal:
+ *      Deletes the node with the given value: Worst case O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of linked list
+ *  @param {Number} [val] value of the node to delete
+ * 
+ *  @returns {Node} Returns the head node after deleting the node with the given value
+ */
 function deleteVal(head, val) {
 	if (!head || head.val === val) {
 		if (!head) {
@@ -102,6 +169,17 @@ function deleteVal(head, val) {
 	}
 }
 
+/**
+ *  update:
+ *      Updates the node of the given value with new value: Worst case O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of linked list
+ *  @param {Number} [val] value of the node to update
+ *  @param {Number} [newVal] new (updated) value of the node
+ * 
+ *  @returns {Node} Returns the head node after updating the node with the given `newVal`
+ */
 function update(head, val, newVal) {
 	if (!head) {
 		return null;
@@ -117,6 +195,15 @@ function update(head, val, newVal) {
 	}
 }
 
+/**
+ *  traverse:
+ *      Traverses (and prints) the complete linked list with given head node: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of linked list
+ * 
+ *  @returns {undefined} Prints all the data (val) in the linked list
+ */
 function traverse(head) {
 	while (head) {
 		console.log(head.val);
@@ -124,6 +211,15 @@ function traverse(head) {
 	}
 }
 
+/**
+ *  reverse:
+ *      Reverses the linked list with given head node: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of linked list
+ * 
+ *  @returns {Node} Returns the new head node after reversing the linked list
+ */
 function reverse(head) {
 	var list = [],
 		node = null,
