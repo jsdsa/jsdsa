@@ -235,3 +235,50 @@ function reverse(head) {
     }
     return node;
 }
+
+/** Main LinkedList functionality for usage */
+function LinkedList() {
+    this.head = null;
+}
+
+LinkedList.prototype.createNode = function(val) {
+    this.head = createNode(this.head, val);
+};
+
+LinkedList.prototype.insertStart = function(val) {
+    this.head = insertStart(this.head, val);
+};
+
+LinkedList.prototype.insertAtLast = function(val) {
+    this.head = insertAtLast(this.head, val);
+};
+
+LinkedList.prototype.insertEnd = function(back, val) {
+    return insertEnd(back, val);
+};
+
+LinkedList.prototype.deleteStart = function() {
+    this.head = deleteStart(this.head);
+};
+
+LinkedList.prototype.deleteAtLast = function() {
+    this.head = deleteAtLast(this.head);
+};
+
+LinkedList.prototype.deleteVal = function(val) {
+    this.head = deleteVal(this.head, val);
+};
+
+LinkedList.prototype.update = function(val, newVal) {
+    this.head = update(this.head, val, newVal);
+};
+
+LinkedList.prototype.traverse = function() {
+    traverse(this.head);
+};
+
+LinkedList.prototype.reverse = function() {
+    this.head = reverse(this.head);
+};
+
+module.exports = LinkedList;
