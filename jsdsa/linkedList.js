@@ -16,12 +16,12 @@
  *      Node constructor for linked list
  */
 function Node() {
-	if (this instanceof Node) {
-		this.next = null;
-		this.val = 0;
-	} else {
-		return new Node();
-	}
+    if (this instanceof Node) {
+        this.next = null;
+        this.val = 0;
+    } else {
+        return new Node();
+    }
 }
 
 /**
@@ -35,10 +35,10 @@ function Node() {
  *  @returns {Node} Returns the node with next node as `next` and value as `val`
  */
 function createNode(next, val) {
-	var node = new Node();
-	node.next = next;
-	node.val = val;
-	return node;
+    var node = new Node();
+    node.next = next;
+    node.val = val;
+    return node;
 }
 
 /**
@@ -52,8 +52,8 @@ function createNode(next, val) {
  *  @returns {Node} Returns the newly created head node of the linked list
  */
 function insertStart(head, val) {
-	var node = createNode(head, val);
-	return node;
+    var node = createNode(head, val);
+    return node;
 }
 
 /**
@@ -67,18 +67,18 @@ function insertStart(head, val) {
  *  @returns {Node} Returns the head node of the linked list with newly created last node
  */
 function insertAtLast(head, val) {
-	var front = head,
-		node = createNode(null, val);
+    var front = head,
+        node = createNode(null, val);
 
-	if (!head) {
-		return node;
-	} else {
-		while (head.next) {
-			head = head.next;
-		}
-		head.next = node;
-		return front;
-	}
+    if (!head) {
+        return node;
+    } else {
+        while (head.next) {
+            head = head.next;
+        }
+        head.next = node;
+        return front;
+    }
 }
 
 /**
@@ -92,14 +92,14 @@ function insertAtLast(head, val) {
  *  @returns {Node} Returns the newly created last node of the linked list
  */
 function insertEnd(back, val) {
-	var node = createNode(null, val);
+    var node = createNode(null, val);
 
-	if (!back) {
-		return node;
-	} else {
-		back.next = node;
-		return node;
-	}
+    if (!back) {
+        return node;
+    } else {
+        back.next = node;
+        return node;
+    }
 }
 
 /**
@@ -112,11 +112,11 @@ function insertEnd(back, val) {
  *  @returns {Node} Returns the new head node after deleting the first node (head) of the linked list
  */
 function deleteStart(head) {
-	if (!head) {
-		return null;
-	} else {
-		return head.next;
-	}
+    if (!head) {
+        return null;
+    } else {
+        return head.next;
+    }
 }
 
 /**
@@ -129,16 +129,16 @@ function deleteStart(head) {
  *  @returns {Node} Returns the head node after deleting the last node of the linked list
  */
 function deleteAtLast(head) {
-	if (!(head && head.next)) {
-		return null;
-	} else {
-		var front = head;
-		while (head.next.next) {
-			head = head.next;
-		}
-		head.next = null;
-		return front;
-	}
+    if (!(head && head.next)) {
+        return null;
+    } else {
+        var front = head;
+        while (head.next.next) {
+            head = head.next;
+        }
+        head.next = null;
+        return front;
+    }
 }
 
 /**
@@ -152,21 +152,21 @@ function deleteAtLast(head) {
  *  @returns {Node} Returns the head node after deleting the node with the given value
  */
 function deleteVal(head, val) {
-	if (!head || head.val === val) {
-		if (!head) {
-			return null;
-		}
-		return head.next;
-	} else {
-		var front = head;
-		while (head.next && head.next.val !== val) {
-			head = head.next;
-		}
-		if (head.next && head.next.val === val) {
-			head.next = head.next.next;
-		}
-		return front;
-	}
+    if (!head || head.val === val) {
+        if (!head) {
+            return null;
+        }
+        return head.next;
+    } else {
+        var front = head;
+        while (head.next && head.next.val !== val) {
+            head = head.next;
+        }
+        if (head.next && head.next.val === val) {
+            head.next = head.next.next;
+        }
+        return front;
+    }
 }
 
 /**
@@ -181,18 +181,18 @@ function deleteVal(head, val) {
  *  @returns {Node} Returns the head node after updating the node with the given `newVal`
  */
 function update(head, val, newVal) {
-	if (!head) {
-		return null;
-	} else {
-		var front = head;
-		while (head && head.val !== val) {
-			head = head.next;
-		}
-		if (head.val === val) {
-			head.val = newVal;
-		}
-		return front;
-	}
+    if (!head) {
+        return null;
+    } else {
+        var front = head;
+        while (head && head.val !== val) {
+            head = head.next;
+        }
+        if (head.val === val) {
+            head.val = newVal;
+        }
+        return front;
+    }
 }
 
 /**
@@ -205,10 +205,10 @@ function update(head, val, newVal) {
  *  @returns {undefined} Prints all the data (val) in the linked list
  */
 function traverse(head) {
-	while (head) {
-		console.log(head.val);
-		head = head.next;
-	}
+    while (head) {
+        console.log(head.val);
+        head = head.next;
+    }
 }
 
 /**
@@ -221,17 +221,17 @@ function traverse(head) {
  *  @returns {Node} Returns the new head node after reversing the linked list
  */
 function reverse(head) {
-	var list = [],
-		node = null,
-		i = -1;
+    var list = [],
+        node = null,
+        i = -1;
 
-	while (head) {
-		list.push(head.val);
-		head = head.next;
-	}
-	while (++i < list.length) {
-		var val = list[i];
-		node = insertStart(node, val);
-	}
-	return node;
+    while (head) {
+        list.push(head.val);
+        head = head.next;
+    }
+    while (++i < list.length) {
+        var val = list[i];
+        node = insertStart(node, val);
+    }
+    return node;
 }
