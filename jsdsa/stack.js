@@ -97,3 +97,22 @@ function pop(stack) {
 		return stack.array[top];
 	}
 }
+
+/**
+ *  peek:
+ *      Get the top element of the stack without popping it
+ * 
+ *  Required:
+ *  @param {Stack} [stack] stack
+ * 
+ *  @returns {Boolean} Returns the top element of the stack
+ */
+function peek(stack) {
+	if (isEmpty(stack)) {
+		return null;
+	} else {
+		var capacity = stack.capacity,
+			top = stack.top;
+		return stack.array[top];
+	}
+}
