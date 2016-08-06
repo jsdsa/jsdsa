@@ -30,14 +30,42 @@ function Queue(capacity) {
     }
 }
 
+/**
+ *  isEmpty:
+ *      Checks if queue is empty (size === 0)
+ * 
+ *  Required:
+ *  @param {Queue} [queue] queue
+ * 
+ *  @returns {Boolean} Returns `true` if queue is empty `else` return false
+ */
 function isEmpty(queue) {
 	return queue.size === 0;
 }
 
+/**
+ *  isFull:
+ *      Checks if queue is full (size === capacity)
+ * 
+ *  Required:
+ *  @param {Queue} [queue] queue
+ * 
+ *  @returns {Boolean} Returns `true` if queue is full `else` return false
+ */
 function isFull(queue) {
 	return queue.size === queue.capacity;
 }
 
+/**
+ *  enqueue:
+ *      Enqueue a new value in the queue
+ * 
+ *  Required:
+ *  @param {Queue} [queue] queue
+ *  @param {Number} [val] value to enqueue in the queue
+ * 
+ *  @returns {Boolean} Returns `true` if value is successfully enqueued `else` return false
+ */
 function enqueue(queue, val) {
 	if (isFull(queue)) {
 		return false;
@@ -50,6 +78,15 @@ function enqueue(queue, val) {
 	}
 }
 
+/**
+ *  dequeue:
+ *      Dequeue the value from the queue
+ * 
+ *  Required:
+ *  @param {Queue} [queue] queue
+ * 
+ *  @returns {Number} Returns the dequeued value from the queue
+ */
 function dequeue(queue) {
 	if (isEmpty(queue)) {
 		return null;
@@ -61,6 +98,15 @@ function dequeue(queue) {
 	}
 }
 
+/**
+ *  peek:
+ *      Get the first element of the queue without removing it 
+ * 
+ *  Required:
+ *  @param {Queue} [queue] queue
+ * 
+ *  @returns {Boolean} Returns the first element of the queue
+ */
 function peek(queue) {
 	if (isEmpty(queue)) {
 		return null;
