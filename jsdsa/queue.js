@@ -49,3 +49,14 @@ function enqueue(queue, val) {
 		return true;
 	}
 }
+
+function dequeue(queue) {
+	if (isEmpty(queue)) {
+		return null;
+	} else {
+		var back = (queue.back + 1) % queue.capacity;
+		queue.size--;
+		queue.back = back;
+		return queue.array[back];
+	}
+}
