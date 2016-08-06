@@ -37,3 +37,15 @@ function isEmpty(queue) {
 function isFull(queue) {
 	return queue.size === queue.capacity;
 }
+
+function enqueue(queue, val) {
+	if (isFull(queue)) {
+		return false;
+	} else {
+		var front = (queue.front + 1) % queue.capacity;
+		queue.array[front] = val;
+		queue.size++;
+		queue.front = front;
+		return true;
+	}
+}
