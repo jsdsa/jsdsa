@@ -69,7 +69,7 @@ function push(stack, val) {
 	if (isFull(stack)) {
 		return false;
 	} else {
-		var top = (stack.top + 1) % stack.capacity;
+		var top = stack.top + 1;
 		stack.array[top] = val;
 		stack.size++;
 		stack.top = top;
@@ -90,10 +90,9 @@ function pop(stack) {
 	if (isEmpty(stack)) {
 		return null;
 	} else {
-		var capacity = stack.capacity,
-			top = stack.top;
+		var top = stack.top;
 		stack.size--;
-		stack.top = ((top - 1) % capacity + capacity) % capacity;
+		stack.top--;
 		return stack.array[top];
 	}
 }
@@ -111,9 +110,7 @@ function peek(stack) {
 	if (isEmpty(stack)) {
 		return null;
 	} else {
-		var capacity = stack.capacity,
-			top = stack.top;
-		return stack.array[top];
+		return stack.array[stack.top];
 	}
 }
 
