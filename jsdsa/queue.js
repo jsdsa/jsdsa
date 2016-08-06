@@ -29,3 +29,11 @@ function Queue(capacity) {
         return new Queue(capacity);
     }
 }
+
+function isEmpty(queue) {
+	return queue.size === 0;
+}
+
+function isFull(queue) {
+	return queue.size === queue.capacity;
+}
