@@ -116,3 +116,25 @@ function peek(stack) {
 		return stack.array[top];
 	}
 }
+
+Stack.prototype.isEmpty = function() {
+	return isEmpty(this);
+};
+
+Stack.prototype.isFull = function() {
+	return isFull(this);
+};
+
+Stack.prototype.push = function(val) {
+	return push(this, val);
+};
+
+Stack.prototype.pop = function() {
+	return pop(this);
+};
+
+Stack.prototype.peek = function() {
+	return peek(this);
+};
+
+module.exports = Stack;
