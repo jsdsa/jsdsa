@@ -55,3 +55,24 @@ function isFull(stack) {
 	return stack.size === stack.capacity;
 }
 
+/**
+ *  push:
+ *      Push a new value in the stack
+ * 
+ *  Required:
+ *  @param {Stack} [stack] stack
+ *  @param {Number} [val] value to push in the stack
+ * 
+ *  @returns {Boolean} Returns `true` if value is successfully pushed else return `false`
+ */
+function push(stack, val) {
+	if (isFull(stack)) {
+		return false;
+	} else {
+		var top = (stack.top + 1) % stack.capacity;
+		stack.array[top] = val;
+		stack.size++;
+		stack.top = top;
+		return true;
+	}
+}
