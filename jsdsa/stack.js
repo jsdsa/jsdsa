@@ -76,3 +76,24 @@ function push(stack, val) {
 		return true;
 	}
 }
+
+/**
+ *  pop:
+ *      Pop the value from the stack
+ * 
+ *  Required:
+ *  @param {Stack} [stack] stack
+ * 
+ *  @returns {Number} Returns the popped value from the stack
+ */
+function pop(stack) {
+	if (isEmpty(stack)) {
+		return null;
+	} else {
+		var capacity = stack.capacity,
+			top = stack.top;
+		stack.size--;
+		stack.top = ((top - 1) % capacity + capacity) % capacity;
+		return stack.array[top];
+	}
+}
