@@ -3,7 +3,7 @@
  *  Class: FIFO-Data Structure
  *  Time Complexity: NA
  *  Description: A linear data structure that is based on first in first out principle, queue implemented using fixed size array
- *  Resources: https://en.wikipedia.org/wiki/Queue_(abstract_data_type)
+ *  Resources: https://en.wikipedia.org/wiki/Queue_(abstract_data_type), http://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm
  *  Extras: 
  *  Contributors: <@ironmaniiith aalekhj2507@gmail.com>
  */
