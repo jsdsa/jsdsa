@@ -40,7 +40,7 @@ function Queue(capacity) {
  *  @returns {Boolean} Returns `true` if queue is empty `else` return false
  */
 function isEmpty(queue) {
-	return queue.size === 0;
+    return queue.size === 0;
 }
 
 /**
@@ -53,7 +53,7 @@ function isEmpty(queue) {
  *  @returns {Boolean} Returns `true` if queue is full `else` return false
  */
 function isFull(queue) {
-	return queue.size === queue.capacity;
+    return queue.size === queue.capacity;
 }
 
 /**
@@ -67,15 +67,15 @@ function isFull(queue) {
  *  @returns {Boolean} Returns `true` if value is successfully enqueued `else` return false
  */
 function enqueue(queue, val) {
-	if (isFull(queue)) {
-		return false;
-	} else {
-		var front = (queue.front + 1) % queue.capacity;
-		queue.array[front] = val;
-		queue.size++;
-		queue.front = front;
-		return true;
-	}
+    if (isFull(queue)) {
+        return false;
+    } else {
+        var front = (queue.front + 1) % queue.capacity;
+        queue.array[front] = val;
+        queue.size++;
+        queue.front = front;
+        return true;
+    }
 }
 
 /**
@@ -88,14 +88,14 @@ function enqueue(queue, val) {
  *  @returns {Number} Returns the dequeued value from the queue
  */
 function dequeue(queue) {
-	if (isEmpty(queue)) {
-		return null;
-	} else {
-		var back = (queue.back + 1) % queue.capacity;
-		queue.size--;
-		queue.back = back;
-		return queue.array[back];
-	}
+    if (isEmpty(queue)) {
+        return null;
+    } else {
+        var back = (queue.back + 1) % queue.capacity;
+        queue.size--;
+        queue.back = back;
+        return queue.array[back];
+    }
 }
 
 /**
@@ -108,32 +108,32 @@ function dequeue(queue) {
  *  @returns {Boolean} Returns the first element of the queue
  */
 function peek(queue) {
-	if (isEmpty(queue)) {
-		return null;
-	} else {
-		var back = (queue.back + 1) % queue.capacity;
-		return queue.array[back];
-	}
+    if (isEmpty(queue)) {
+        return null;
+    } else {
+        var back = (queue.back + 1) % queue.capacity;
+        return queue.array[back];
+    }
 }
 
 Queue.prototype.isEmpty = function() {
-	return isEmpty(this);
+    return isEmpty(this);
 };
 
 Queue.prototype.isFull = function() {
-	return isFull(this);
+    return isFull(this);
 };
 
 Queue.prototype.enqueue = function(val) {
-	return enqueue(this, val);
+    return enqueue(this, val);
 };
 
 Queue.prototype.dequeue = function() {
-	return dequeue(this);
+    return dequeue(this);
 };
 
 Queue.prototype.peek = function() {
-	return peek(this);
+    return peek(this);
 };
 
 module.exports = Queue;
