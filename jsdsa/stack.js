@@ -39,7 +39,7 @@ function Stack(capacity) {
  *  @returns {Boolean} Returns `true` if stack is empty else return `false`
  */
 function isEmpty(stack) {
-	return stack.size === 0;
+    return stack.size === 0;
 }
 
 /**
@@ -52,7 +52,7 @@ function isEmpty(stack) {
  *  @returns {Boolean} Returns `true` if stack is full else return `false`
  */
 function isFull(stack) {
-	return stack.size === stack.capacity;
+    return stack.size === stack.capacity;
 }
 
 /**
@@ -66,15 +66,15 @@ function isFull(stack) {
  *  @returns {Boolean} Returns `true` if value is successfully pushed else return `false`
  */
 function push(stack, val) {
-	if (isFull(stack)) {
-		return false;
-	} else {
-		var top = stack.top + 1;
-		stack.array[top] = val;
-		stack.size++;
-		stack.top = top;
-		return true;
-	}
+    if (isFull(stack)) {
+        return false;
+    } else {
+        var top = stack.top + 1;
+        stack.array[top] = val;
+        stack.size++;
+        stack.top = top;
+        return true;
+    }
 }
 
 /**
@@ -87,14 +87,14 @@ function push(stack, val) {
  *  @returns {Number} Returns the popped value from the stack
  */
 function pop(stack) {
-	if (isEmpty(stack)) {
-		return null;
-	} else {
-		var top = stack.top;
-		stack.size--;
-		stack.top--;
-		return stack.array[top];
-	}
+    if (isEmpty(stack)) {
+        return null;
+    } else {
+        var top = stack.top;
+        stack.size--;
+        stack.top--;
+        return stack.array[top];
+    }
 }
 
 /**
@@ -107,31 +107,31 @@ function pop(stack) {
  *  @returns {Boolean} Returns the top element of the stack
  */
 function peek(stack) {
-	if (isEmpty(stack)) {
-		return null;
-	} else {
-		return stack.array[stack.top];
-	}
+    if (isEmpty(stack)) {
+        return null;
+    } else {
+        return stack.array[stack.top];
+    }
 }
 
 Stack.prototype.isEmpty = function() {
-	return isEmpty(this);
+    return isEmpty(this);
 };
 
 Stack.prototype.isFull = function() {
-	return isFull(this);
+    return isFull(this);
 };
 
 Stack.prototype.push = function(val) {
-	return push(this, val);
+    return push(this, val);
 };
 
 Stack.prototype.pop = function() {
-	return pop(this);
+    return pop(this);
 };
 
 Stack.prototype.peek = function() {
-	return peek(this);
+    return peek(this);
 };
 
 module.exports = Stack;
