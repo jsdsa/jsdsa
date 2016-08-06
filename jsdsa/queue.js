@@ -118,22 +118,22 @@ function peek(queue) {
 
 Queue.prototype.isEmpty = function() {
 	return isEmpty(this);
-}
+};
 
 Queue.prototype.isFull = function() {
 	return isFull(this);
-}
+};
 
 Queue.prototype.enqueue = function(val) {
 	return enqueue(this, val);
-}
+};
 
 Queue.prototype.dequeue = function() {
 	return dequeue(this);
-}
+};
 
 Queue.prototype.peek = function() {
 	return peek(this);
-}
+};
 
 module.exports = Queue;
