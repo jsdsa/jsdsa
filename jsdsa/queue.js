@@ -60,3 +60,12 @@ function dequeue(queue) {
 		return queue.array[back];
 	}
 }
+
+function peek(queue) {
+	if (isEmpty(queue)) {
+		return null;
+	} else {
+		var back = (queue.back + 1) % queue.capacity;
+		return queue.array[back];
+	}
+}
