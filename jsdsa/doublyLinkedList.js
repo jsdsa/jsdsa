@@ -283,3 +283,55 @@ function reverse(head) {
     }
     return node;
 }
+
+/** Main DoublyLinkedList functionality for usage */
+function DoublyLinkedList() {
+    this.head = null;
+    this.tail = null;
+}
+
+DoublyLinkedList.prototype.createNode = function(val) {
+    this.head = createNode(this.head, this.tail, val);
+};
+
+DoublyLinkedList.prototype.insertStart = function(val) {
+    this.head = insertStart(this.head, val);
+};
+
+DoublyLinkedList.prototype.insertAtLast = function(val) {
+    this.head = insertAtLast(this.head, val);
+};
+
+DoublyLinkedList.prototype.insertEnd = function(val) {
+    this.tail = insertEnd(this.tail, val);
+};
+
+DoublyLinkedList.prototype.deleteStart = function() {
+    this.head = deleteStart(this.head);
+};
+
+DoublyLinkedList.prototype.deleteAtLast = function() {
+    this.head = deleteAtLast(this.head);
+};
+
+DoublyLinkedList.prototype.deleteVal = function(val) {
+    this.head = deleteVal(this.head, val);
+};
+
+DoublyLinkedList.prototype.update = function(val, newVal) {
+    this.head = update(this.head, val, newVal);
+};
+
+DoublyLinkedList.prototype.traverse = function() {
+    traverse(this.head);
+};
+
+DoublyLinkedList.prototype.traverseBack = function() {
+    traverseBack(this.tail);
+};
+
+DoublyLinkedList.prototype.reverse = function() {
+    this.head = reverse(this.head);
+};
+
+module.exports = DoublyLinkedList;
