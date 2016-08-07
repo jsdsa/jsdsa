@@ -150,3 +150,21 @@ function deleteAtLast(head) {
         return start;
     }
 }
+
+/**
+ *  deleteEnd:
+ *      Deletes the ending node of the doubly linked list: O(1)
+ * 
+ *  Required:
+ *  @param {Node} [tail] tail node of doubly linked list
+ * 
+ *  @returns {Node} Returns the new tail node after deleting the last node (tail) of the doubly linked list
+ */
+function deleteEnd(tail) {
+    if (!(tail && tail.prev)) {
+        return null;
+    } else {
+        tail.prev.next = null;
+        return tail.prev;
+    }
+}
