@@ -110,3 +110,21 @@ function insertEnd(tail, val) {
         return node;
     }
 }
+
+/**
+ *  deleteStart:
+ *      Deletes the starting node of the doubly linked list: O(1)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of doubly linked list
+ * 
+ *  @returns {Node} Returns the new head node after deleting the first node (head) of the doubly linked list
+ */
+function deleteStart(head) {
+    if (!(head && head.next)) {
+        return null;
+    } else {
+        head.next.prev = null;
+        return head.next;
+    }
+}
