@@ -89,3 +89,24 @@ function insertAtLast(head, val) {
         return start;
     }
 }
+
+/**
+ *  insertEnd:
+ *      Inserts a new node at the end of linked list: O(1), uses last node pointer `tail`
+ * 
+ *  Required:
+ *  @param {Node} [tail] last node of the doubly linked list
+ *  @param {Number} [val] value to assign to the node
+ * 
+ *  @returns {Node} Returns the newly created last node of the doubly linked list
+ */
+function insertEnd(tail, val) {
+    var node = createNode(tail, null, val);
+
+    if (!tail) {
+        return node;
+    } else {
+        tail.next = node;
+        return node;
+    }
+}
