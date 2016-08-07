@@ -24,3 +24,22 @@ function Node() {
         return new Node();
     }
 }
+
+/**
+ *  createNode:
+ *      Creates and returns a doubly linked list node with the given prev, next and value
+ * 
+ *  Required:
+ *  @param {Node} [prev] prev node of the new node to create
+ *  @param {Node} [next] next node of the new node to create
+ *  @param {Number} [val] value to assign to current node
+ * 
+ *  @returns {Node} Returns the node with next node as `next`, prev node as `prev` and value as `val`
+ */
+function createNode(prev, next, val) {
+    var node = new Node();
+    node.prev = prev;
+    node.next = next;
+    node.val = val;
+    return node;
+}
