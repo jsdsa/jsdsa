@@ -258,3 +258,28 @@ function traverseBack(tail) {
         tail = tail.prev;
     }
 }
+
+/**
+ *  reverse:
+ *      Reverses the doubly linked list with given head node: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of doubly linked list
+ * 
+ *  @returns {Node} Returns the new head node after reversing the doubly linked list
+ */
+function reverse(head) {
+    var list = [],
+        node = null,
+        i = -1;
+
+    while (head) {
+        list.push(head.val);
+        head = head.next;
+    }
+    while (++i < list.length) {
+        var val = list[i];
+        node = insertStart(node, val);
+    }
+    return node;
+}
