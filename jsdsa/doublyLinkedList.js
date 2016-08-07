@@ -200,3 +200,29 @@ function deleteVal(head, val) {
         return front;
     }
 }
+
+/**
+ *  update:
+ *      Updates the node of the given value with new value: Worst case O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of doubly linked list
+ *  @param {Number} [val] value of the node to update
+ *  @param {Number} [newVal] new (updated) value of the node
+ * 
+ *  @returns {Node} Returns the head node after updating the node with the given `newVal`
+ */
+function update(head, val, newVal) {
+    if (!head) {
+        return null;
+    } else {
+        var front = head;
+        while (head && head.val !== val) {
+            head = head.next;
+        }
+        if (head.val === val) {
+            head.val = newVal;
+        }
+        return front;
+    }
+}
