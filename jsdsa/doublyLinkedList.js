@@ -46,13 +46,13 @@ function createNode(prev, next, val) {
 
 /**
  *  insertStart:
- *      Inserts a new node in the beginning of the linked list: O(1)
+ *      Inserts a new node in the beginning of the doubly linked list: O(1)
  * 
  *  Required:
  *  @param {Node} [head] head node of the doubly linked list
  *  @param {Number} [val] value to assign to the node
  * 
- *  @returns {Node} Returns the newly created head node of the linked list
+ *  @returns {Node} Returns the newly created head node of the doubly linked list
  */
 function insertStart(head, val) {
     var node = createNode(null, head, val);
