@@ -226,3 +226,35 @@ function update(head, val, newVal) {
         return front;
     }
 }
+
+/**
+ *  traverse:
+ *      Traverses (and prints) the complete linked list with given head node: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of doubly linked list
+ * 
+ *  @returns {undefined} Prints all the data (val) in the linked list (head to tail)
+ */
+function traverse(head) {
+    while (head) {
+        console.log(head.val);
+        head = head.next;
+    }
+}
+
+/**
+ *  traverseBack:
+ *      Traverses back (and prints) the complete linked list with given tail node: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [tail] tail node of doubly linked list
+ * 
+ *  @returns {undefined} Prints all the data (val) in the linked list in reverse order (tail to head)
+ */
+function traverseBack(tail) {
+    while (tail) {
+        console.log(tail.val);
+        tail = tail.prev;
+    }
+}
