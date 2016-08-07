@@ -128,3 +128,25 @@ function deleteStart(head) {
         return head.next;
     }
 }
+
+/**
+ *  deleteAtLast:
+ *      Deletes the ending node of the doubly linked list: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of doubly linked list
+ * 
+ *  @returns {Node} Returns the head node after deleting the last node of the linked list
+ */
+function deleteAtLast(head) {
+    if (!(head && head.next)) {
+        return null;
+    } else {
+        var start = head;
+        while (head.next.next) {
+            head = head.next;
+        }
+        head.next = null;
+        return start;
+    }
+}
