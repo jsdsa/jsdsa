@@ -184,7 +184,7 @@ function deleteVal(head, val) {
         if (!head) {
             return null;
         }
-        head.next && (head.next.prev = null);
+        if (head.next) head.next.prev = null;
         return head.next;
     } else {
         var front = head;
