@@ -56,7 +56,7 @@ function createNode(prev, next, val) {
  */
 function insertStart(head, val) {
     var node = createNode(null, head, val);
-    
+
     if (!head) {
         return node;
     } else {
