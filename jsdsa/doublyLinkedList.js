@@ -314,6 +314,10 @@ DoublyLinkedList.prototype.deleteAtLast = function() {
     this.head = deleteAtLast(this.head);
 };
 
+DoublyLinkedList.prototype.deleteEnd = function() {
+    this.tail = deleteEnd(this.tail);
+};
+
 DoublyLinkedList.prototype.deleteVal = function(val) {
     this.head = deleteVal(this.head, val);
 };
