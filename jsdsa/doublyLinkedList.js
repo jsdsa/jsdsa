@@ -168,3 +168,35 @@ function deleteEnd(tail) {
         return tail.prev;
     }
 }
+
+/**
+ *  deleteVal:
+ *      Deletes the node with the given value: Worst case O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of doubly linked list
+ *  @param {Number} [val] value of the node to delete
+ * 
+ *  @returns {Node} Returns the head node after deleting the node with the given value
+ */
+function deleteVal(head, val) {
+    if (!head || head.val === val) {
+        if (!head) {
+            return null;
+        }
+        head.next && (head.next.prev = null);
+        return head.next;
+    } else {
+        var front = head;
+        while (head.next && head.next.val !== val) {
+            head = head.next;
+        }
+        if (head.next && head.next.val === val) {
+            head.next = head.next.next;
+            if (head.next) {
+                head.next.prev = head;
+            }
+        }
+        return front;
+    }
+}
