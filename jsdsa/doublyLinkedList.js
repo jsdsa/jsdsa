@@ -64,3 +64,28 @@ function insertStart(head, val) {
         return node;
     }
 }
+
+/**
+ *  insertAtLast:
+ *      Inserts a new node at the last of the doubly linked list: O(n)
+ * 
+ *  Required:
+ *  @param {Node} [head] head node of the doubly linked list
+ *  @param {Number} [val] value to assign to the node
+ * 
+ *  @returns {Node} Returns the head node of the doubly linked list with newly created last node
+ */
+function insertAtLast(head, val) {
+    var start = head,
+        node = createNode(head, null, val);
+
+    if (!head) {
+        return node;
+    } else {
+        while (head.next) {
+            head = head.next;
+        }
+        head.next = node;
+        return start;
+    }
+}
